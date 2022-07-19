@@ -30,11 +30,11 @@ var name = disk.getName(); // returns name like 'tempDisk'
 
 Returns the settings for the disk.
 
-### startup( name, properties = {} )
+## startup( name, properties = {} )
 
 Start up a disk provider with the instance data it needs to start up. It must ensure that it sets the "started" variable to true to operate.
 
-### shutdown()
+## shutdown
 
 cbfs invokes this method before the cbfs module is unloaded or during application reinit. You can implement this method as you see fit to shut down connections, sockets, etc.
 
