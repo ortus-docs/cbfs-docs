@@ -7,3 +7,4 @@
 * [Installation](getting-started/installation.md)
 * [Configuration](getting-started/configuration.md)
 * [Disk Service](getting-started/disk-service.md)
+* [Disk Instance](getting-started/disk-instance.md)
