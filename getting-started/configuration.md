@@ -1,6 +1,6 @@
 # Configuration
 
-In your config/ColdBox.cfc create a cbfs structure within the moduleSettings key. Here you will define your storage disks and global settings for the cbfs storage services.
+In your `config/ColdBox.cfc` create a cbfs structure within the `moduleSettings` key. Here you will define your storage disks and global settings for the cbfs storage services.
 
 {% hint style="info" %}
 Each provider has its own configuration properties. Please review this book for additional information on each provider.
@@ -27,6 +27,20 @@ moduleSettings = {
 	},
 };
 ```
+
+## Disks
+
+You can register as many disks as you want in the parent application using this structure. The `key` will be the name of the disk, and the value is a struct of:
+
+* `provider` : The provider's short name, a WireBox ID, or a full CFC path.
+* `properties` : A struct of properties that configures each provider.
+
+By default, we register two disks in your ColdBox application.
+
+| Disk    | Provider | Description                                                                                                                    |
+| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| default | Local    | By convention, it creates a `.cbfs` folder in the root of your application where all files will be stored.                     |
+| temp    | Local    | Access to the Java temporary folder structure you can use for any type of generation that is not web-accessible and temporary. |
 
 ## Default Disk
 
