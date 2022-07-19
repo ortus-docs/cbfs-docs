@@ -46,3 +46,17 @@ By default, we register two disks in your ColdBox application.
 | default | Local    | By convention, it creates a `.cbfs` folder in the root of your application where all files will be stored.                     |
 | temp    | Local    | Access to the Java temporary folder structure you can use for any type of generation that is not web-accessible and temporary. |
 
+## Providers
+
+The available providers are listed below with their appropriate properties to configure them.
+
+### Local
+
+The `local` provider has a shortcut of `Local` or it can be fully referenced via its WireBox ID `LocalProvider@cbfs`. The available properties are:
+
+
+
+| Property     | Type    | Default | Description                                                                             |
+| ------------ | ------- | ------- | --------------------------------------------------------------------------------------- |
+| `path`       | string  | ---     | The relative or absolute path of where to store the file system.                        |
+| `autoExpand` | boolean | false   | If true, it will use an `expandPath()` on the `path` property. Else it leaves it as is. |
