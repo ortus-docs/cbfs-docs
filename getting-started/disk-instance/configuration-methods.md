@@ -34,6 +34,12 @@ var name = disk.getName(); // returns name defined in ColdBox.cfc
 
 Returns the settings for the disk.
 
+```javascript
+var properties = disk.getProperties(); // returns struct
+
+var isCDrive = properties.path == "C:\" ? true : false;
+```
+
 ## startup
 
 Start up a disk provider with the instance data it needs to start up. It must ensure that it sets the "started" variable to true to operate.
