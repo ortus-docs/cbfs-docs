@@ -28,6 +28,10 @@ moduleSettings = {
 };
 ```
 
+## Default Disk
+
+You can use the `defaultDisk` setting to point it to a registered disk by name. Every time you use the default operations, it will be based upon this setting.
+
 ## Disks
 
 You can register as many disks as you want in the parent application using this structure. The `key` will be the name of the disk, and the value is a struct of:
@@ -41,8 +45,4 @@ By default, we register two disks in your ColdBox application.
 | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | default | Local    | By convention, it creates a `.cbfs` folder in the root of your application where all files will be stored.                     |
 | temp    | Local    | Access to the Java temporary folder structure you can use for any type of generation that is not web-accessible and temporary. |
-
-## Default Disk
-
-You can use the `defaultDisk` setting to point it to a registered disk by name. Every time you use the default operations, it will be based upon this setting.
 
