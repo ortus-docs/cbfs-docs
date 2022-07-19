@@ -1,7 +1,7 @@
 # Configuration Methods
 
 {% hint style="info" %}
-The configuration methods are most commonly used by cbfs internally to startup and shutdown disks.&#x20;
+The configuration methods are most commonly used by cbfs internally to startup and shutdown disks. You should only have to call these methods directly for advanced use cases.
 {% endhint %}
 
 ## getIdentifier
@@ -27,7 +27,7 @@ if ( !disk.hasStarted() ) {
 Returns the name of the disk.
 
 ```javascript
-var name = disk.getName(); // returns name like 'tempDisk'
+var name = disk.getName(); // returns name defined in ColdBox.cfc
 ```
 
 ## getProperties
