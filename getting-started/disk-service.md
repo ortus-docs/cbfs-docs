@@ -11,6 +11,16 @@ property name="diskService" inject="DiskService@cbfs";
 
 The full API for the Disk Service can be found in the [API Docs](https://apidocs.ortussolutions.com/#/coldbox-modules/cbfs/).
 
+## Injection DSL
+
+The `cbfs` module also registers a WireBox injection DSL that you can use to inject objects from the module:
+
+| DSL                 | Description                                                  |
+| ------------------- | ------------------------------------------------------------ |
+| `cbfs`              | Injects the `DiskService@cbfs`                               |
+| `cbfs:disks`        | Injects the entire disks record structure                    |
+| `cbfs:disks:{name}` | Injects the specific disk by `{name}`. Ex: `cbfs:disks:temp` |
+
 ## Core Methods
 
 ### get( name )
