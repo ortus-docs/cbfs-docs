@@ -27,3 +27,8 @@ moduleSettings = {
 	},
 };
 ```
+
+## Default Disk
+
+You can use the `defaultDisk` setting to point it to a registered disk by name. Every time you use the default operations, it will be based upon this setting.
+
