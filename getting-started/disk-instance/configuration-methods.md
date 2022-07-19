@@ -34,9 +34,15 @@ var name = disk.getName(); // returns name defined in ColdBox.cfc
 
 Returns the settings for the disk.
 
-## startup( name, properties = {} )
+## startup
 
 Start up a disk provider with the instance data it needs to start up. It must ensure that it sets the "started" variable to true to operate.
+
+```javascript
+disk.startup( name="myDisk", properties={
+
+} );
+```
 
 ## shutdown
 
@@ -44,7 +50,7 @@ cbfs invokes this method before the cbfs module is unloaded or during applicatio
 
 ```javascript
 if ( disk.hasStarted() ) {
-    disk.shutdown();
+    disk.shutdown(); // No disk for you.
 }
 ```
 
