@@ -1,5 +1,9 @@
 # Configuration Methods
 
+{% hint style="info" %}
+The configuration methods are most commonly used by cbfs internally to startup and shutdown disks.&#x20;
+{% endhint %}
+
 ## getIdentifier
 
 Returns the unique UUID identifier for this disk.
