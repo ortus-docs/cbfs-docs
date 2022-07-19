@@ -56,6 +56,34 @@ Copy a file from one destination to another.
 
 Move a file from one destination to another.
 
+### get( path )
+
+Get the contents of a file.
+
+### getAsBinary( path )
+
+Get the contents of a file as binary, such as an executable or image.
+
+### exists( path )
+
+Validate if a file or directory exists.
+
+### missing( path )
+
+Validate if a file or directory doesn't exist.
+
+### delete( path, throwOnMissing = false )
+
+Delete a file or an array of file paths. If a file does not exist a `false` will be shown for it's return.
+
+### touch( path, createPath = false )
+
+Create a new empty file if it does not exist.
+
+
+
+
+
 
 
 
