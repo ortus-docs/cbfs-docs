@@ -40,7 +40,7 @@ Start up a disk provider with the instance data it needs to start up. It must en
 
 ```javascript
 disk.startup( name="myDisk", properties={
-
+    "path": "C:\somepath"
 } );
 ```
 
