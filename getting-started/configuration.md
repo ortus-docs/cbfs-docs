@@ -60,3 +60,7 @@ The `local` provider has a shortcut of `Local` or it can be fully referenced via
 | ------------ | ------- | ------- | --------------------------------------------------------------------------------------- |
 | `path`       | string  | ---     | The relative or absolute path of where to store the file system.                        |
 | `autoExpand` | boolean | false   | If true, it will use an `expandPath()` on the `path` property. Else it leaves it as is. |
+
+### Ram
+
+The `ram` provider has a shortcut of `Ram` or it can be fully referenced via its WireBox ID `RamProvider@cbfs`. It also does not have any configuration properties.
