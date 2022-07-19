@@ -38,3 +38,9 @@ Start up a disk provider with the instance data it needs to start up. It must en
 
 cbfs invokes this method before the cbfs module is unloaded or during application reinit. You can implement this method as you see fit to shut down connections, sockets, etc.
 
+```javascript
+if ( disk.hasStarted() ) {
+    disk.shutdown();
+}
+```
+
