@@ -1,14 +1,22 @@
 # Disk Instance
 
-## Core Methods
-
-### getIdentifier()
+### getIdentifier
 
 Returns the unique UUID identifier for this disk.
 
-### hasStarted()
+```javascript
+var identifier = disk.getIdentifier(); // returns GUID
+```
+
+### hasStarted
 
 Returns true if the disk has been started up, false if not.
+
+```javascript
+if ( !disk.hasStarted() ) {
+    // Email Luis
+}
+```
 
 ### getName()
 

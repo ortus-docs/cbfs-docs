@@ -8,6 +8,7 @@
 * [Configuration](getting-started/configuration.md)
 * [Disk Service](getting-started/disk-service.md)
 * [Disk Instance](getting-started/disk-instance.md)
+  * [Configuration Methods](getting-started/disk-instance/configuration-methods.md)
   * [File Methods](getting-started/disk-instance/file-methods.md)
   * [Directory Methods](getting-started/disk-instance/directory-methods.md)
   * [Utility Methods](getting-started/disk-instance/utility-methods.md)
