@@ -11,6 +11,9 @@ The full API for the Disk Service can be found in the [API Docs](https://apidocs
 diskService = getInstance( "cbfs" );
 property name="diskService" inject="cbfs";
 
+diskService = getInstance( "DiskService@cbfs" );
+property name="diskService" inject="DiskService@cbfs";
+
 // Injects the entire disks record structure
 disks = getInstance( "cbfs:disks" );
 property name="disks" inject="cbfs:disks";
