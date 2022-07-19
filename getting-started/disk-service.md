@@ -2,24 +2,26 @@
 
 cbfs includes a Disk Service object you can use to register and interact with your disks.
 
-```javascript
-// Via getInstance()
-var diskService = getInstance( "DiskService@cbfs" );
-// Via cfproperty
-property name="diskService" inject="DiskService@cbfs";
-```
-
 The full API for the Disk Service can be found in the [API Docs](https://apidocs.ortussolutions.com/#/coldbox-modules/cbfs/).
 
 ## Injection DSL
 
-The `cbfs` module also registers a WireBox injection DSL that you can use to inject objects from the module:
+```javascript
+// Injects the DiskService
+diskService = getInstance( "cbfs" );
+property name="diskService" inject="cbfs";
 
-| DSL                 | Description                                                  |
-| ------------------- | ------------------------------------------------------------ |
-| `cbfs`              | Injects the `DiskService@cbfs`                               |
-| `cbfs:disks`        | Injects the entire disks record structure                    |
-| `cbfs:disks:{name}` | Injects the specific disk by `{name}`. Ex: `cbfs:disks:temp` |
+// Injects the entire disks record structure
+disks = getInstance( "cbfs:disks" );
+property name="disks" inject="cbfs:disks";
+
+// Injects a specific disk by name
+tempDisk = getInstance( "cbfs:disks:{name}" );
+tempDisk = getInstance( "cbfs:disks:temp" );
+property name="tempDisk" inject="cbfs:disks:temp";
+```
+
+The `cbfs` module also registers a WireBox injection DSL that you can use to inject objects from the module:
 
 ## Core Methods
 
