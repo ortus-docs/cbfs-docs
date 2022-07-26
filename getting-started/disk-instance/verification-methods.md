@@ -18,7 +18,19 @@ if ( disk.isFile( path="myFile.txt" ) ) {}
 
 ### isReadable
 
+Returns true if the file is readable.
 
+```javascript
+/**
+ * @path The file path
+ *
+ * @throws cbfs.FileNotFoundException - If the filepath is missing
+ */
+boolean function isReadable( required path );
+
+// Example
+var isReadable = disk.isReadable( "myFile.txt" );va
+```
 
 ### isWritable
 
