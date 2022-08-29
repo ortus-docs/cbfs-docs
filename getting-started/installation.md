@@ -4,7 +4,10 @@ Use CommandBox CLI to install:
 
 ```
 box install cbfs
+```
 
-# Install bleeding edge version
+To install the bleeding-edge version:
+
+```
 box install cbfs@be
 ```
