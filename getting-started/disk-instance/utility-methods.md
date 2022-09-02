@@ -2,35 +2,36 @@
 
 ### checksum
 
-```
+Generates a checksum for a file in different hashing algorithms.
+
+```javascript
 /**
-	 * Generate checksum for a file in different hashing algorithms
-	 *
-	 * @path      The file path
-	 * @algorithm Default is MD5, but SHA-1, SHA-256, and SHA-512 can also be used.
-	 *
-	 * @throws cbfs.FileNotFoundException
-	 */
-	string function checksum( required path, algorithm = "MD5" ){
-		return hash( ensureRecordExists( arguments.path ).contents, arguments.algorithm );
-	}
+ * @path      The file path
+ * @algorithm Default is MD5, but SHA-1, SHA-256, and SHA-512 can also be used.
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+string function checksum( required path, algorithm = "MD5" );
+
+// Example
+disk.checksum( expandPath( "myFile.txt" ), "SHA-256" );
 ```
 
 ### chmod
 
-```
+Sets the access attributes of the file on Unix-based disks.
+
+```javascript
 /**
-	 * Sets the access attributes of the file on Unix based disks
-	 *
-	 * @path The file path
-	 * @mode Access mode, the same attributes you use for the Linux command `chmod`
-	 *
-	 * @return cbfs.models.IDisk
-	 */
-	function chmod( required string path, required string mode ){
-		ensureRecordExists( arguments.path ).mode = arguments.mode;
-		return this;
-	}
+ * @path The file path
+ * @mode Access mode, the same attributes you use for the Linux command `chmod`
+ *
+ * @return cbfs.models.IDisk
+ */
+function chmod( required string path, required string mode );
+
+// Example
+disk.chmod( expandPath( "myFile.txt" ), "600" );
 ```
 
 ### createSymbolicLink
