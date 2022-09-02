@@ -56,15 +56,17 @@ disk.createSymbolicLink( "mySymbolicLink", expandPath( "/myfolder" ) );
 
 ### extension
 
-```
-	/**
-	 * Extract the extension from the file path
-	 *
-	 * @path The file path
-	 */
-	string function extension( required path ){
-		return listLast( this.name( arguments.path ), "." );
-	}
+Extract the extension from the file path
+
+```javascript
+/**
+ * @path The file path
+ */
+string function extension( required path );
+
+// Example
+disk.extension( someImagePath ); // returns ".jpg";
+
 ```
 
 ### info
