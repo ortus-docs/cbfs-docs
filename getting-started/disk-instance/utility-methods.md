@@ -65,7 +65,7 @@ Extract the extension from the file path
 string function extension( required path );
 
 // Example
-disk.extension( someImagePath ); // returns ".jpg";
+disk.extension( someImagePath ); // returns '.jpg';
 
 ```
 
@@ -89,63 +89,67 @@ disk.info( expandPath( "myFile.txt" ) );
 
 ### lastModified
 
-```
+Retrieves the file's last modified timestamp.
+
+```javascript
 /**
-	 * Retrieve the file's last modified timestamp
-	 *
-	 * @path The file path location
-	 *
-	 * @throws cbfs.FileNotFoundException
-	 */
-	function lastModified( required path ){
-		return ensureRecordExists( arguments.path ).lastModified;
-	}
-```
-
-### mimeType
-
-```
-/**
-	 * Retrieve the file's mimetype
-	 *
-	 * @path The file path location
-	 *
-	 * @throws cbfs.FileNotFoundException
-	 */
-	function mimeType( required path ){
-		return getMimeType( ensureRecordExists( arguments.path ).path );
-	}
-```
-
-### size
-
-```
-/**
- * Retrieve the size of the file in bytes
- *
  * @path The file path location
  *
  * @throws cbfs.FileNotFoundException
  */
-numeric function size( required path ){
-	return len( get( arguments.path ) );
-}
+function lastModified( required path );
+
+// Example
+disk.lastModified( expandPath( "myFile.txt" ) );
+```
+
+### mimeType
+
+Retrieves the file's mimetype.
+
+```javascript
+/**
+ * @path The file path location
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+function mimeType( required path );
+
+// Example
+disk.mimeType( expandPath( "myFile.jpg" ) ); // returns 'image/jpeg'
+```
+
+### size
+
+Retrieves the size of the file in bytes.
+
+```javascript
+/**
+ * @path The file path location
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+numeric function size( required path );
+
+// Example
+disk.size( expandPath( "myFile.txt" ) ); // returns 2097152
 ```
 
 ### temporaryURI
 
-```
+Gets a temporary URI for the given file.
+
+```javascript
 /**
- * Get a temporary uri for the given file
- *
  * @path       The file path to build the uri for
  * @expiration The number of minutes this uri should be valid for.
  *
  * @throws cbfs.FileNotFoundException
  */
-string function temporaryUri( required path, numeric expiration ){
-	return this.uri( arguments.path ) & "?expiration=#arguments.expiration#";
-}
+string function temporaryUri( required path, numeric expiration );
+
+// Example
+disk.temporaryUri( expandPath( "myFile.txt", 60 ) );
 ```
 
 ### uri
