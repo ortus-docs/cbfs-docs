@@ -72,9 +72,21 @@ function create(
 );
 ```
 
-### delete( path, throwOnMissing )
+### delete
 
 Delete a file or an array of file paths. If a file does not exist, `false` will be returned.
+
+```javascript
+/**
+ * @path           A single file path or an array of file paths
+ * @throwOnMissing Boolean to throw an exception if the file is missing.
+ *
+ * @return boolean or struct report of deletion
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+boolean function delete( required any path, boolean throwOnMissing = false );
+```
 
 ### exists( path )
 
