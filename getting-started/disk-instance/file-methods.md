@@ -23,13 +23,54 @@ function append(
 );
 ```
 
-### copy( source, destination )
+### copy
 
 Copy a file from one destination to another.
 
-### create( path, contents, visibility, metadata, overwrite, mode )
+```javascript
+/**
+ * @source      The source file path
+ * @destination The end destination path
+ * @overwrite   Flag to overwrite the file at the destination, if it exists. Defaults to true.
+ *
+ * @return cbfs.models.IDisk
+ *
+ * @throws cbfs.FileNotFoundException - When the source doesn't exist
+ * @throws cbfs.FileOverrideException - When the destination exists and no override has been provided
+ */
+function copy(
+	required source,
+	required destination,
+	boolean overwrite = true
+);
+```
+
+### create
 
 Create a file on the disk.
+
+```javascript
+/**
+ * @path       The file path to use for storage
+ * @contents   The contents of the file to store
+ * @visibility The storage visibility of the file, available options are `public, private, readonly` or a custom data type the implemented driver can interpret
+ * @metadata   Struct of metadata to store with the file
+ * @overwrite  Flag to overwrite the file at the destination, if it exists. Defaults to true.
+ * @mode       Applies to *nix systems. If passed, it overrides the visbility argument and uses these octal values instead
+ *
+ * @return cbfs.models.IDisk
+ *
+ * @throws cbfs.FileOverrideException - When a file exists and no override has been provided
+ */
+function create(
+	required path,
+	required contents,
+	string visibility = "public",
+	struct metadata   = {},
+	boolean overwrite = true,
+	string mode
+);
+```
 
 ### delete( path, throwOnMissing )
 
