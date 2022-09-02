@@ -71,20 +71,20 @@ disk.extension( someImagePath ); // returns ".jpg";
 
 ### info
 
-```
+Returns information about the file. Will contain keys such as lastModified, size, path, name, type, canWrite, canRead, isHidden, and more depending on the provider used.
+
+```javascript
 /**
-	 * Return information about the file.  Will contain keys such as lastModified, size, path, name, type, canWrite, canRead, isHidden and more
-	 * depending on the provider used
-	 *
-	 * @path The file path
-	 *
-	 * @return A struct of file metadata according to provider
-	 *
-	 * @throws cbfs.FileNotFoundException
-	 */
-	struct function info( required path ){
-		return ensureRecordExists( arguments.path );
-	}
+ * @path The file path
+ *
+ * @return A struct of file metadata according to provider
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+struct function info( required path );
+
+// Example
+disk.info( expandPath( "myFile.txt" ) );
 ```
 
 ### lastModified
