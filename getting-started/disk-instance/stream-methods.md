@@ -15,3 +15,26 @@ function stream( required path );
 // Example
 disk.stream( expandPath( "datadump.txt" ) );
 ```
+
+### streamOf
+
+Create a Java stream of the incoming array of files or directories.&#x20;
+
+```javascript
+/**
+ * @target The target array of files/directories to generate a stream of
+ *
+ * @return Stream object: See https://apidocs.ortussolutions.com/coldbox-modules/cbstreams/1.1.0/index.html
+ */
+function streamOf( required array target ){
+	
+// Example
+disk.streamOf( disk.files( "my.path" ) )
+	.filter( function( item ){
+		return item.startsWith( "a" );
+	} )
+	.forEach( function( item ){
+		writedump( item );	
+	} );
+```
+
