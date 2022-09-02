@@ -36,26 +36,22 @@ disk.chmod( expandPath( "myFile.txt" ), "600" );
 
 ### createSymbolicLink
 
-```
+Creates a symbolic link in the system if it supports it. The target parameter is the target of the link. It may be an absolute or relative path and may not exist. When the target is a relative path, then file system operations on the resulting link are relative to the path of the link.
+
+```javascript
 /**
-	 * Create a symbolic link in the system if it supports it.
-	 *
-	 * The target parameter is the target of the link. It may be an absolute or relative path and may not exist. When the target is a relative path then file system operations on the resulting link are relative to the path of the link.
-	 *
-	 * @link   The path of the symbolic link to create
-	 * @target The target of the symbolic link
-	 *
-	 * @return cbfs.models.IDisk
-	 *
-	 * @throws cbfs.FileNotFoundException    - if the target does not exist
-	 * @throws UnsupportedOperationException - if the implementation does not support symbolic links
-	 */
-	function createSymbolicLink( required link, required target ){
-		variables.files[ arguments.link ] = ensureRecordExists( arguments.target )
-			.duplicate()
-			.append( { symbolicLink : true } );
-		return this;
-	}
+ * @link   The path of the symbolic link to create
+ * @target The target of the symbolic link
+ *
+ * @return cbfs.models.IDisk
+ *
+ * @throws cbfs.FileNotFoundException    - if the target does not exist
+ * @throws UnsupportedOperationException - if the implementation does not support symbolic links
+ */
+function createSymbolicLink( required link, required target );
+
+// Example
+disk.createSymbolicLink( "mySymbolicLink", expandPath( "/myfolder" ) );
 ```
 
 ### extension
