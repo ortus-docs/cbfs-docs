@@ -51,7 +51,7 @@ Creates a symbolic link in the system if it supports it. The target parameter is
 function createSymbolicLink( required link, required target );
 
 // Example
-disk.createSymbolicLink( "mySymbolicLink", expandPath( "/myfolder" ) );
+disk.createSymbolicLink( expandPath( "/symbolicPath" ), expandPath( "/myfolder" ) );
 ```
 
 ### extension
@@ -154,15 +154,16 @@ disk.temporaryUri( expandPath( "myFile.txt", 60 ) );
 
 ### uri
 
-```
-	/**
-	 * Get the uri for the given file
-	 *
-	 * @path The file path to build the uri for
-	 *
-	 * @throws cbfs.FileNotFoundException
-	 */
-	string function uri( required string path ){
-		return ensureRecordExists( arguments.path ).path;
-	}
+Gets the URI for the given file.
+
+```javascript
+/**
+ * @path The file path to build the uri for
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+string function uri( required string path );
+
+// Example
+disk.uri( expandPath( "myFile.txt" ) );
 ```
