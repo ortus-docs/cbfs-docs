@@ -1,8 +1,27 @@
 # File Methods
 
-### append( path, contents, metadata, throwOnMissing )
+### append
 
 Append contents to the end of a file.
+
+```javascript
+/**
+ * @path           The file path to use for storage
+ * @contents       The contents of the file to append
+ * @metadata       Struct of metadata to store with the file
+ * @throwOnMissing Boolean flag to throw if the file is missing. Otherwise it will be created if missing.
+ *
+ * @return LocalProvider
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+function append(
+	required string path,
+	required contents,
+	struct metadata        = {},
+	boolean throwOnMissing = false
+);
+```
 
 ### copy( source, destination )
 
