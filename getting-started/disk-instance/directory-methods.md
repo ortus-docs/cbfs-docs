@@ -23,9 +23,23 @@ array function allContents(
 );
 ```
 
+### buildDiskPath
+
+Builds the path on the provided disk from it's root + incoming path with normalization, cleanup and canonicalization.
+
+```javascript
+/**
+ * This function builds the path on the provided disk from it's root + incoming path
+ * with normalization, cleanup and canonicalization.
+ *
+ * @path The path on the disk to build
+ *
+ * @return The canonical path on the disk
+ */
+function buildDiskPath( required string path );
+```
+
 ### cleanDirectory
-
-
 
 Empty the specified directory of all files and folders.
 
@@ -134,6 +148,29 @@ boolean function deleteDirectory(
 
 ```
 
+### files
+
+Get an array of all files in a directory.
+
+```javascript
+/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @recurse   Recurse into subdirectories, default is false
+ * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function files(
+	required directory,
+	any filter,
+	sort,
+	boolean recurse  = false,
+	boolean absolute = false
+);
+```
+
 ### isDirectory
 
 Returns boolean determining if a path is a directory or not.
@@ -171,30 +208,6 @@ function moveDirectory(
 ```
 
 ```javascript
-
-
-/**
- * Get an array of all files in a directory.
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @recurse   Recurse into subdirectories, default is false
- * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function files(
-	required directory,
-	any filter,
-	sort,
-	boolean recurse  = false,
-	boolean absolute = false
-){
-	arguments.type = "file";
-	return contents( argumentCollection = arguments );
-};
-
 /**
  * Get an array of all directories in a directory.
  *
@@ -354,19 +367,4 @@ array function allContentsMap( required directory, any filter, sort ){
 	arguments.recurse = true;
 	return contentsMap( argumentCollection = arguments );
 };
-
-/**
- * This function builds the path on the provided disk from it's root + incoming path
- * with normalization, cleanup and canonicalization.
- *
- * @path The path on the disk to build
- *
- * @return The canonical path on the disk
- */
-function buildDiskPath( required string path ){
-	var pathTarget = normalizePath( arguments.path );
-	return pathTarget.startsWith( variables.properties.path ) ? pathTarget : getCanonicalPath(
-		variables.properties.path & "/#pathTarget#"
-	).reReplace( "\/$", "" );
-}
 ```
