@@ -1,201 +1,45 @@
 # File Methods
 
-### append
+### append( path, contents, metadata, throwOnMissing )
 
 Append contents to the end of a file.
 
-```javascript
-/**
- * @path           The file path to use for storage
- * @contents       The contents of the file to append
- * @metadata       Struct of metadata to store with the file
- * @throwOnMissing Boolean flag to throw if the file is missing. Otherwise it will be created if missing.
- *
- * @return LocalProvider
- *
- * @throws cbfs.FileNotFoundException
- */
-function append(
-	required string path,
-	required contents,
-	struct metadata        = {},
-	boolean throwOnMissing = false
-);
-```
-
-### copy
+### copy( source, destination )
 
 Copy a file from one destination to another.
 
-```javascript
-/**
- * @source      The source file path
- * @destination The end destination path
- * @overwrite   Flag to overwrite the file at the destination, if it exists. Defaults to true.
- *
- * @return cbfs.models.IDisk
- *
- * @throws cbfs.FileNotFoundException - When the source doesn't exist
- * @throws cbfs.FileOverrideException - When the destination exists and no override has been provided
- */
-function copy(
-	required source,
-	required destination,
-	boolean overwrite = true
-);
-```
-
-### create
+### create( path, contents, visibility, metadata, overwrite, mode )
 
 Create a file on the disk.
 
-```javascript
-/**
- * @path       The file path to use for storage
- * @contents   The contents of the file to store
- * @visibility The storage visibility of the file, available options are `public, private, readonly` or a custom data type the implemented driver can interpret
- * @metadata   Struct of metadata to store with the file
- * @overwrite  Flag to overwrite the file at the destination, if it exists. Defaults to true.
- * @mode       Applies to *nix systems. If passed, it overrides the visbility argument and uses these octal values instead
- *
- * @return cbfs.models.IDisk
- *
- * @throws cbfs.FileOverrideException - When a file exists and no override has been provided
- */
-function create(
-	required path,
-	required contents,
-	string visibility = "public",
-	struct metadata   = {},
-	boolean overwrite = true,
-	string mode
-);
-```
-
-### delete
+### delete( path, throwOnMissing )
 
 Delete a file or an array of file paths. If a file does not exist, `false` will be returned.
 
-```javascript
-/**
- * @path           A single file path or an array of file paths
- * @throwOnMissing Boolean to throw an exception if the file is missing.
- *
- * @return boolean or struct report of deletion
- *
- * @throws cbfs.FileNotFoundException
- */
-boolean function delete( required any path, boolean throwOnMissing = false );
-```
-
-### exists
+### exists( path )
 
 Validate if a file or directory exists.
 
-```javascript
-/**
- * @path The file/directory path to verify
- */
-boolean function exists( required string path );
-```
-
-### get
+### get( path )
 
 Get the contents of a file.
 
-```javascript
-/**
- * @path The file path to retrieve
- *
- * @return The contents of the file
- *
- * @throws cbfs.FileNotFoundException
- */
-any function get( required path );
-```
-
-### getAsBinary
+### getAsBinary( path )
 
 Get the contents of a file as binary, such as an executable or image.
 
-```javascript
-/**
- * @path The file path to retrieve
- *
- * @return A binary representation of the file
- *
- * @throws cbfs.FileNotFoundException
- */
-any function getAsBinary( required path );
-```
-
-### missing
+### missing( path )
 
 Validate if a file or directory doesn't exist.
 
-```javascript
-/**
- * @path The file/directory path to verify
- */
-boolean function missing( required string path );
-```
-
-### move
+### move( source, destination )
 
 Move a file from one destination to another.
 
-```javascript
-/**
- * @source      The source file path
- * @destination The end destination path
- *
- * @return cbfs.models.IDisk
- *
- * @throws cbfs.FileNotFoundException - When the source doesn't exist
- * @throws cbfs.FileOverrideException - When the destination exists and no override has been provided
- */
-function move(
-	required source,
-	required destination,
-	boolean overwrite = true
-);
-```
-
-### prepend
+### prepend( path, contents, metadata, throwOnMissing )
 
 Prepend contents to the beginning of a file. This method can be a costly operation for local disk storage.
 
-```javascript
-/**
- * @path           The file path to use for storage
- * @contents       The contents of the file to prepend
- * @metadata       Struct of metadata to store with the file
- * @throwOnMissing Boolean flag to throw if the file is missing. Otherwise it will be created if missing.
- *
- * @return LocalProvider
- *
- * @throws cbfs.FileNotFoundException
- */
-function prepend(
-	required string path,
-	required contents,
-	struct metadata        = {},
-	boolean throwOnMissing = false
-);
-```
-
-### touch
+### touch( path, createPath )
 
 Create a new empty file if it does not exist.
-
-```javascript
-/**
- * @path       The file path
- * @createPath if set to false, expects all parent directories to exist, true will generate necessary directories. Defaults to true.
- *
- * @return cbfs.models.IDisk
- *
- * @throws cbfs.PathNotFoundException
- */
-function touch( required path, boolean createPath = true );
-```
