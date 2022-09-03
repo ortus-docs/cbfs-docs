@@ -46,6 +46,28 @@ function createDirectory(
 );
 ```
 
+### deleteDirectory
+
+Delete one or more directory locations.
+
+```javascript
+/**
+ * @directory      The directory or an array of directories
+ * @recurse        Recurse the deletion or not, defaults to true
+ * @throwOnMissing Throws an exception if the directory does not exist, defaults to false
+ *
+ * @return A boolean value or a struct of booleans determining if the directory paths got deleted or not.
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+boolean function deleteDirectory(
+	required string directory,
+	boolean recurse        = true,
+	boolean throwOnMissing = false
+);
+
+```
+
 ### isDirectory
 
 Returns boolean determining if a path is a directory or not.
@@ -84,57 +106,6 @@ function moveDirectory(
 
 ```javascript
 
-/**
- * Delete 1 or more directory locations
- *
- * @directory      The directory or an array of directories
- * @recurse        Recurse the deletion or not, defaults to true
- * @throwOnMissing Throws an exception if the directory does not exist, defaults to false
- *
- * @return A boolean value or a struct of booleans determining if the directory paths got deleted or not.
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-public boolean function deleteDirectory(
-	required string directory,
-	boolean recurse        = true,
-	boolean throwOnMissing = false
-){
-	// If missing throw or ignore
-	if ( missing( arguments.directory ) ) {
-		if ( arguments.throwOnMissing ) {
-			throw(
-				type    = "cbfs.DirectoryNotFoundException",
-				message = "Directory [#arguments.directory#] not found."
-			);
-		}
-		return false;
-	}
-
-	// Wipe it out baby!
-	if ( arguments.recurse ) {
-		variables.jFiles.walkFileTree(
-			buildJavaDiskPath( arguments.directory ), // start path
-			createDynamicProxy(
-				wirebox.getInstance( "DeleteAllVisitor@cbfs" ),
-				[ "java.nio.file.FileVisitor" ]
-			) // visitor
-		);
-	} else {
-		// Proxy it and delete like an egyptian!
-		variables.jFiles.walkFileTree(
-			buildJavaDiskPath( arguments.directory ), // start path
-			createObject( "java", "java.util.HashSet" ), // options
-			javacast( "int", 1 ), // maxDepth
-			createDynamicProxy(
-				wirebox.getInstance( "DeleteFileVisitor@cbfs" ),
-				[ "java.nio.file.FileVisitor" ]
-			) // visitor
-		);
-	}
-
-	return true;
-};
 
 /**
  * Empty the specified directory of all files and folders.
