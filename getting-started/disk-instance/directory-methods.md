@@ -23,15 +23,73 @@ array function allContents(
 );
 ```
 
-### buildDiskPath
+### allDirectories
 
-Builds the path on the provided disk from it's root + incoming path with normalization, cleanup and canonicalization.
+Get an array of all directories in a directory using recursion.
 
 ```javascript
 /**
- * This function builds the path on the provided disk from it's root + incoming path
- * with normalization, cleanup and canonicalization.
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
  *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function allDirectories(
+	required directory,
+	any filter,
+	sort,
+	boolean absolute = false
+);
+```
+
+### allFiles
+
+Get an array of all files ina .directory using recursion. This is a shortcut to files() with recursion argument.
+
+```javascript
+/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function allFiles(
+	required directory,
+	any filter,
+	sort,
+	boolean absolute = false
+);
+```
+
+### allFilesMap
+
+Get an array of structs of all recursive files in a directory and their appropriate information map: attributes, dateLastModified, directory, link, name, size, etc.
+
+<pre class="language-javascript"><code class="lang-javascript">/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @extended  Default of false produces basic file info, true, produces posix extended info.
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function allFilesMap(
+	required directory,
+	any filter,
+	sort,
+	boolean extended = false
+<strong>);</strong></code></pre>
+
+### buildDiskPath
+
+Builds the path on the provided disk from its root + incoming path with normalization, cleanup, and canonicalization.
+
+```javascript
+/**
  * @path The path on the disk to build
  *
  * @return The canonical path on the disk
@@ -171,8 +229,6 @@ array function directories(
 );
 ```
 
-###
-
 ### files
 
 Get an array of all files in a directory.
@@ -193,6 +249,30 @@ array function files(
 	sort,
 	boolean recurse  = false,
 	boolean absolute = false
+);
+```
+
+### filesMap
+
+Get an array of structs of all files in a directory and their appropriate information map: attributes, dateLastModified, directory, link, name, size, etc.\
+
+
+```javascript
+/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @recurse   Recurse into subdirectories, default is false
+ * @extended  Default of false produces basic file info, true, produces posix extended info.
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function filesMap(
+	required directory,
+	any filter,
+	sort,
+	boolean recurse  = false,
+	boolean extended = false
 );
 ```
 
@@ -232,144 +312,3 @@ function moveDirectory(
 );
 ```
 
-```javascript
-
-
-/**
- * Get an array of all files in a directory using recursion, this is a shortcut to the `files()` with recursion
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function allFiles(
-	required directory,
-	any filter,
-	sort,
-	boolean absolute = false
-){
-	arguments.type    = "File";
-	arguments.recurse = true;
-	return contents( argumentCollection = arguments );
-};
-
-/**
- * Get an array of all directories in a directory using recursion
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function allDirectories(
-	required directory,
-	any filter,
-	sort,
-	boolean absolute = false
-){
-	arguments.type    = "Dir";
-	arguments.recurse = true;
-	return contents( argumentCollection = arguments );
-}
-
-/**
- * Get an array of structs of all files in a directory and their appropriate information map:
- * - Attributes
- * - DateLastModified
- * - Directory
- * - Link
- * - Name
- * - Size
- * - etc
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @recurse   Recurse into subdirectories, default is false
- * @extended  Default of false produces basic file info, true, produces posix extended info.
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function filesMap(
-	required directory,
-	any filter,
-	sort,
-	boolean recurse  = false,
-	boolean extended = false
-){
-	return files( argumentCollection = arguments ).map( function( item ){
-		return extended ? extendedInfo( arguments.item ) : info( arguments.item );
-	} );
-};
-
-/**
- * Get an array of structs of all recursive files in a directory and their appropriate information map:
- * - Attributes
- * - DateLastModified
- * - Directory
- * - Link
- * - Name
- * - Size
- * - etc
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @extended  Default of false produces basic file info, true, produces posix extended info.
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function allFilesMap(
-	required directory,
-	any filter,
-	sort,
-	boolean extended = false
-){
-	arguments.recurse = true;
-	return filesMap( argumentCollection = arguments );
-};
-
-/**
- * Get an array of content from all the files from a specific directory
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @recurse   Recurse into subdirectories, default is false
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function contentsMap(
-	required directory,
-	any filter,
-	sort,
-	boolean recurse = false
-){
-	return files( argumentCollection = arguments ).map( function( item ){
-		return {
-			"path"     : arguments.item,
-			"contents" : get( arguments.item ),
-			"size"     : size( arguments.item )
-		};
-	} );
-};
-
-/**
- * Get an array of content from all the files from a specific directory with recursion
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function allContentsMap( required directory, any filter, sort ){
-	arguments.recurse = true;
-	return contentsMap( argumentCollection = arguments );
-};
-```
