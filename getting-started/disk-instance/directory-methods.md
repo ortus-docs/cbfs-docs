@@ -1,5 +1,21 @@
 # Directory Methods
 
+### cleanDirectory
+
+Empty the specified directory of all files and folders.
+
+```javascript
+/**
+ * @directory      The directory
+ * @throwOnMissing Throws an exception if the directory does not exist, defaults to false
+ *
+ * @return cbfs.models.IDisk
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+function cleanDirectory( required directory, boolean throwOnMissing = false );
+```
+
 ### copyDirectory
 
 Copies a directory to a destination. The 'filter' argument can be a closure and lambda with the format function(path ).
@@ -105,43 +121,6 @@ function moveDirectory(
 ```
 
 ```javascript
-
-
-/**
- * Empty the specified directory of all files and folders.
- *
- * @directory      The directory
- * @throwOnMissing Throws an exception if the directory does not exist, defaults to false
- *
- * @return cbfs.models.IDisk
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-function cleanDirectory( required directory, boolean throwOnMissing = false ){
-	// If missing throw or ignore
-	if ( missing( arguments.directory ) ) {
-		if ( arguments.throwOnMissing ) {
-			throw(
-				type    = "cbfs.DirectoryNotFoundException",
-				message = "Directory [#arguments.directory#] not found."
-			);
-		}
-		return false;
-	}
-
-	// Proxy it and delete like an egyptian!
-	variables.jFiles.walkFileTree(
-		buildJavaDiskPath( arguments.directory ),
-		createDynamicProxy(
-			wirebox
-				.getInstance( "DeleteAllVisitor@cbfs" )
-				.setExcludeRoot( buildDiskPath( arguments.directory ) ),
-			[ "java.nio.file.FileVisitor" ]
-		)
-	);
-
-	return this;
-}
 
 /**
  * Get an array listing of all files and directories in a directory.
