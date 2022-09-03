@@ -140,14 +140,62 @@ Validate if a file or directory doesn't exist.
 boolean function missing( required string path );
 ```
 
-### move( source, destination )
+### move
 
 Move a file from one destination to another.
 
-### prepend( path, contents, metadata, throwOnMissing )
+```javascript
+/**
+ * @source      The source file path
+ * @destination The end destination path
+ *
+ * @return cbfs.models.IDisk
+ *
+ * @throws cbfs.FileNotFoundException - When the source doesn't exist
+ * @throws cbfs.FileOverrideException - When the destination exists and no override has been provided
+ */
+function move(
+	required source,
+	required destination,
+	boolean overwrite = true
+);
+```
+
+### prepend
 
 Prepend contents to the beginning of a file. This method can be a costly operation for local disk storage.
 
-### touch( path, createPath )
+```javascript
+/**
+ * @path           The file path to use for storage
+ * @contents       The contents of the file to prepend
+ * @metadata       Struct of metadata to store with the file
+ * @throwOnMissing Boolean flag to throw if the file is missing. Otherwise it will be created if missing.
+ *
+ * @return LocalProvider
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+function prepend(
+	required string path,
+	required contents,
+	struct metadata        = {},
+	boolean throwOnMissing = false
+);
+```
+
+### touch
 
 Create a new empty file if it does not exist.
+
+```javascript
+/**
+ * @path       The file path
+ * @createPath if set to false, expects all parent directories to exist, true will generate necessary directories. Defaults to true.
+ *
+ * @return cbfs.models.IDisk
+ *
+ * @throws cbfs.PathNotFoundException
+ */
+function touch( required path, boolean createPath = true );
+```
