@@ -23,6 +23,21 @@ array function allContents(
 );
 ```
 
+### allContentsMap
+
+Get an array of content from all the files from a specific directory with recursion.
+
+```javascript
+/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function allContentsMap( required directory, any filter, sort );
+```
+
 ### allDirectories
 
 Get an array of all directories in a directory using recursion.
@@ -46,7 +61,7 @@ array function allDirectories(
 
 ### allFiles
 
-Get an array of all files ina .directory using recursion. This is a shortcut to files() with recursion argument.
+Get an array of all files in a directory using recursion. This is a shortcut to files() with a recursion argument.
 
 ```javascript
 /**
@@ -136,6 +151,28 @@ array function contents(
 	type             = "all",
 	boolean absolute = false
 );
+```
+
+### contentsMap
+
+Get an array of content from all the files from a specific directory.
+
+```javascript
+/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @recurse   Recurse into subdirectories, default is false
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function contentsMap(
+	required directory,
+	any filter,
+	sort,
+	boolean recurse = false
+);
+
 ```
 
 ### copyDirectory
