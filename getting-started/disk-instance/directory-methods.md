@@ -148,6 +148,31 @@ boolean function deleteDirectory(
 
 ```
 
+### directories
+
+Get an array of all directories in a directory.
+
+```javascript
+/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @recurse   Recurse into subdirectories, default is false
+ * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function directories(
+	required directory,
+	any filter,
+	sort,
+	boolean recurse  = false,
+	boolean absolute = false
+);
+```
+
+###
+
 ### files
 
 Get an array of all files in a directory.
@@ -208,27 +233,7 @@ function moveDirectory(
 ```
 
 ```javascript
-/**
- * Get an array of all directories in a directory.
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @recurse   Recurse into subdirectories, default is false
- * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function directories(
-	required directory,
-	any filter,
-	sort,
-	boolean recurse  = false,
-	boolean absolute = false
-){
-	arguments.type = "Dir";
-	return contents( argumentCollection = arguments );
-};
+
 
 /**
  * Get an array of all files in a directory using recursion, this is a shortcut to the `files()` with recursion
