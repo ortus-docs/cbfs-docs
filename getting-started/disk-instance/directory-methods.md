@@ -1,6 +1,31 @@
 # Directory Methods
 
+### allContents
+
+Get an array listing of all files and directories in a directory using recursion.
+
+```javascript
+/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @type      Filter the result to only include files, directories, or both. ('file|files', 'dir|directory', 'all'). Default is 'all'
+ * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function allContents(
+	required directory,
+	any filter,
+	sort,
+	type             = "all",
+	boolean absolute = false
+);
+```
+
 ### cleanDirectory
+
+
 
 Empty the specified directory of all files and folders.
 
@@ -14,6 +39,31 @@ Empty the specified directory of all files and folders.
  * @throws cbfs.DirectoryNotFoundException
  */
 function cleanDirectory( required directory, boolean throwOnMissing = false );
+```
+
+### contents
+
+Get an array listing of all files and directories in a directory.
+
+```javascript
+/**
+ * @directory The directory
+ * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
+ * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
+ * @recurse   Recurse into subdirectories, default is false
+ * @type      Filter the result to only include files, directories, or both. ('file|files', 'dir|directory', 'all'). Default is 'all'
+ * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
+ *
+ * @throws cbfs.DirectoryNotFoundException
+ */
+array function contents(
+	required directory,
+	any filter,
+	sort,
+	boolean recurse  = false,
+	type             = "all",
+	boolean absolute = false
+);
 ```
 
 ### copyDirectory
@@ -122,68 +172,6 @@ function moveDirectory(
 
 ```javascript
 
-/**
- * Get an array listing of all files and directories in a directory.
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @recurse   Recurse into subdirectories, default is false
- * @type      Filter the result to only include files, directories, or both. ('file|files', 'dir|directory', 'all'). Default is 'all'
- * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function contents(
-	required directory,
-	any filter,
-	sort,
-	boolean recurse  = false,
-	type             = "all",
-	boolean absolute = false
-){
-	// If missing throw or ignore
-	if ( missing( arguments.directory ) ) {
-		throw(
-			type    = "cbfs.DirectoryNotFoundException",
-			message = "Directory [#arguments.directory#] not found."
-		);
-	}
-
-	// Move to nio later
-	return directoryList(
-		buildDiskPath( arguments.directory ), // path
-		arguments.recurse, // recurse
-		"path", // listinfo
-		isNull( arguments.filter ) ? "" : arguments.filter, // filter
-		isNull( arguments.sort ) ? "" : arguments.sort, // sort
-		arguments.type // type
-	).map( function( item ){
-		return absolute ? arguments.item : arguments.item.replace( variables.properties.path, "" );
-	} );
-}
-
-/**
- * Get an array listing of all files and directories in a directory using recursion
- *
- * @directory The directory
- * @filter    A string wildcard or a lambda/closure that receives the file path and should return true to include it in the returned array or not.
- * @sort      Columns by which to sort. e.g. Directory, Size DESC, DateLastModified.
- * @type      Filter the result to only include files, directories, or both. ('file|files', 'dir|directory', 'all'). Default is 'all'
- * @absolute  Local provider only: We return relative disk paths by default. If true, we return absolute paths
- *
- * @throws cbfs.DirectoryNotFoundException
- */
-array function allContents(
-	required directory,
-	any filter,
-	sort,
-	type             = "all",
-	boolean absolute = false
-){
-	arguments.recurse = true;
-	return contents( argumentCollection = arguments );
-}
 
 /**
  * Get an array of all files in a directory.
