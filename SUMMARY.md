@@ -14,3 +14,7 @@
   * [Utility Methods](getting-started/disk-instance/utility-methods.md)
   * [Stream Methods](getting-started/disk-instance/stream-methods.md)
   * [Verification Methods](getting-started/disk-instance/verification-methods.md)
+
+***
+
+* [Custom Filesystem](custom-filesystem.md)
