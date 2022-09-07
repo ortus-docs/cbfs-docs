@@ -5,6 +5,7 @@
 ## Getting Started
 
 * [Installation](getting-started/installation.md)
+* [Module Configuration](getting-started/module-configuration.md)
 * [Configuration](getting-started/configuration.md)
 * [Disk Service](getting-started/disk-service.md)
 * [Disk Instance](getting-started/disk-instance.md)
