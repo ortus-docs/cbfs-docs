@@ -14,8 +14,8 @@ The available storage providers are:
 
 * `Local` - A local file system storage provider.
 * `Ram` - An in-memory file storage provider.
+* `Temporary` - A temporary local storage
 * `S3` - An Amazon S3, Rackspace, Digital Ocean, or Google Cloud Storage provider. (Beta)
-* `CacheBox` - Leverages ANY caching engine as a virtual file system. If you use a distributed cache like Couchbase, Redis, or Mongo, you will have a distributed file system.
 
 ## System Requirements
 

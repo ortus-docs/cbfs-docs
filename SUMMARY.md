@@ -6,7 +6,6 @@
 
 * [Installation](getting-started/installation.md)
 * [Configuration](getting-started/configuration.md)
-* [Module Configuration](getting-started/module-configuration.md)
 * [Disk Service](getting-started/disk-service.md)
 * [Disk Instance](getting-started/disk-instance.md)
   * [Configuration Methods](getting-started/disk-instance/configuration-methods.md)
@@ -18,4 +17,5 @@
 
 ***
 
+* [Module Configuration](module-configuration.md)
 * [Custom Filesystem](custom-filesystem.md)
