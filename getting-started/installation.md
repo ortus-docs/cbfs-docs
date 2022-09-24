@@ -1,6 +1,6 @@
 # Installation
 
-Use CommandBox CLI to install:
+Use [CommandBox CLI](https://www.ortussolutions.com/products/commandbox) to install:
 
 ```
 box install cbfs
