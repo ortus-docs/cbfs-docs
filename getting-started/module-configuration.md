@@ -1,13 +1,10 @@
 # Module Configuration
 
-Any ColdBox module can create disks in the configure() lifecycle method in ModuleConfig.cfc.
+If you are creating your own ColdBox modules, you can create disks from those modules in the configure() lifecycle method in ModuleConfig.cfc.
 
 ```javascript
-component {
 
-	/**
-	 * Configure this module
-	 */
+component {
 	function configure(){
 		settings = {
 			// CBFS Module
@@ -25,7 +22,6 @@ component {
 				}
 			}
 		};
-	}
-	
+	}	
 }
 ```
