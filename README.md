@@ -6,16 +6,16 @@ description: cbfs is a module for ColdBox that provides abstractions to any file
 
 <figure><img src=".gitbook/assets/CleanShot 2022-08-29 at 14.02.25.png" alt=""><figcaption></figcaption></figure>
 
-The `cbfs` module will enable you to abstract **ANY** filesystem within your ColdBox applications. You can configure as many disks as you wish to represent file systems in your application. Each disk is backed by a storage provider and configurable within your ColdBox application.
+The cbfs module will enable you to abstract **ANY** filesystem within your ColdBox applications. You can configure as many disks as you wish to represent file systems in your application. Each disk is backed by a storage provider and configurable within your ColdBox application.
 
 ## Storage Providers
 
 The available storage providers are:
 
-* `Local` - A local file system storage provider.
-* `Ram` - An in-memory file storage provider.
-* `Temporary` - A temporary local storage
-* `S3` - An Amazon S3, Rackspace, Digital Ocean, or Google Cloud Storage provider. (Beta)
+* Local - A local file system storage provider.
+* Ram - An in-memory file storage provider.
+* Temporary - A temporary local storage
+* S3 - An Amazon S3, Rackspace, Digital Ocean, or Google Cloud Storage provider. (Beta)
 
 ## System Requirements
 
@@ -26,7 +26,7 @@ The available storage providers are:
 
 ## Versioning
 
-`cbfs` is maintained under the [Semantic Versioning](https://semver.org) guidelines as much as possible. We number releases in the following format:
+cbfs is maintained under the [Semantic Versioning](https://semver.org) guidelines as much as possible. We number releases in the following format:
 
 ```
 <major>.<minor>.<patch>
