@@ -32,6 +32,21 @@ moduleSettings = {
 
 You can use the `defaultDisk` setting to point it to a registered disk by name. Every time you use the default operations, it will be based upon this setting.
 
+<pre class="language-javascript"><code class="lang-javascript"><strong>function configure() {
+</strong><strong>	moduleSettings = {
+</strong>		cbfs: {
+			// Set disk named 'default' as the default disk.
+			"defaultDisk" : "default",
+			"disks"       : {
+				"default" : {
+					provider   : "Local",
+					properties : { path : "#controller.getAppRootPath()#.cbfs" }
+				}
+			}
+		},
+	};
+}</code></pre>
+
 ## Disks
 
 You can register as many disks as you want in the parent application using this structure. The `key` will be the name of the disk, and the value is a struct of:
