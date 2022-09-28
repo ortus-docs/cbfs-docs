@@ -10,18 +10,13 @@ Each provider has its own configuration properties. Please review this book for 
 moduleSettings = {
 	cbfs: {
 		// The default disk with a reserved name of 'default'
-		"defaultDisk" : "default",
+		"defaultDisk" : "myStorage",
 		// Register the disks on the system
 		"disks"       : {
 			// Your default application storage
-			"default" : {
+			"myStorage" : {
 				provider   : "Local",
-				properties : { path : "#controller.getAppRootPath()#.cbfs" }
-			},
-			// A disk that points to the CFML Engine's temp directory
-			"temp" : {
-				provider   : "Local",
-				properties : { path : getTempDirectory() }
+				properties : { path : "#controller.getAppRootPath()#.myStorage" }
 			},
 			// An S3 disk point use Digital Ocean Spaces
 			"S3" : {
