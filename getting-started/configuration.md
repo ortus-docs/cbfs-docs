@@ -23,17 +23,19 @@ moduleSettings = {
 				provider   : "Local",
 				properties : { path : getTempDirectory() }
 			},
+			// An S3 disk point use Digital Ocean Spaces
 			"S3" : {
-			"provider": "S3",
-			"properties": {
-				"visibility": "public", // can be 'public' or 'private'
-				"path": "",
-				"accessKey": "",
-				"secretKey": "",
-				"awsDomain": "digitaloceanspaces.com",
-				"awsRegion": "sfo3",
-				"defaultBucketName": "myDOSpace",
-				"signatureType": "v4"
+				"provider": "S3",
+				"properties": {
+					"visibility": "public", // can be 'public' or 'private'
+					"path": "",
+					"accessKey": "",
+					"secretKey": "",
+					"awsDomain": "digitaloceanspaces.com",
+					"awsRegion": "sfo3",
+					"defaultBucketName": "myDOSpace",
+					"signatureType": "v4"
+				}
 			}
 		}
 	},
