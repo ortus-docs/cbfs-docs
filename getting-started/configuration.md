@@ -22,6 +22,18 @@ moduleSettings = {
 			"temp" : {
 				provider   : "Local",
 				properties : { path : getTempDirectory() }
+			},
+			"S3" : {
+			"provider": "S3",
+			"properties": {
+				"visibility": "public", // can be 'public' or 'private'
+				"path": "",
+				"accessKey": "",
+				"secretKey": "",
+				"awsDomain": "digitaloceanspaces.com",
+				"awsRegion": "sfo3",
+				"defaultBucketName": "myDOSpace",
+				"signatureType": "v4"
 			}
 		}
 	},
