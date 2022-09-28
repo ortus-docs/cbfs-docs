@@ -50,9 +50,9 @@ You can use the `defaultDisk` setting to point it to a registered disk by name. 
 			// Set disk named 'default' as the default disk.
 			"defaultDisk" : "default",
 			"disks"       : {
-				"default" : {
+				"myStorage" : {
 					provider   : "Local",
-					properties : { path : "#controller.getAppRootPath()#.cbfs" }
+					properties : { path : "#controller.getAppRootPath()#.mystorage" }
 				}
 			}
 		},
