@@ -88,26 +88,15 @@ Delete a file or an array of file paths. If a file does not exist, `false` will 
 boolean function delete( required any path, boolean throwOnMissing = false );
 ```
 
-### fileExists
+### exists
 
-Validate if a file exists.
-
-```javascript
-/**
- * @path The file path to verify
- */
-boolean function fileExists( required string path );
-```
-
-### fileMissing
-
-Validate if a file doesn't exist.
+Validate if a file or directory exists.
 
 ```javascript
 /**
- * @path The file path to verify
+ * @path The file/directory path to verify
  */
-boolean function fileMissing( required string path );
+boolean function exists( required string path );
 ```
 
 ### get
@@ -138,6 +127,17 @@ Get the contents of a file as binary, such as an executable or image.
  * @throws cbfs.FileNotFoundException
  */
 any function getAsBinary( required path );
+```
+
+### missing
+
+Validate if a file or directory doesn't exist.
+
+```javascript
+/**
+ * @path The file/directory path to verify
+ */
+boolean function missing( required string path );
 ```
 
 ### move

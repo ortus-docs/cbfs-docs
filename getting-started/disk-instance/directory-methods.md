@@ -266,6 +266,32 @@ array function directories(
 );
 ```
 
+### directoryExists
+
+Validates that a directory does exists.
+
+```javascript
+/**
+ * Validate if a directory exists
+ *
+ * @path The directory to verify
+ */
+boolean function directoryExists( required string path )
+```
+
+### directoryMissing
+
+Validates that a directory does not exists.
+
+```javascript
+/**
+ * Validate if a directory exists
+ *
+ * @path The directory to verify
+ */
+boolean function directoryExists( required string path )
+```
+
 ### files
 
 Get an array of all files in a directory.
