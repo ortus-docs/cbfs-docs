@@ -1,16 +1,9 @@
-# Custom Filesystem
+# Custom Providers
 
-You can implement your own custom file system storage into your applications by using the included IDisk interface.
+You can implement your own custom Disk Provider into your applications by extending `cbfs.models.AbstractDiskProvider` and creating a provider which includes all of the methods listed in the sample component below:
 
 ```javascript
-/**
- * The disk interface is used to implement a storage provider backend.
- * Each disk implementation represents a specific provider and location and can contain many more functions a part from the
- * ones defined in this interface.  This is the base abstraction layer to storage.
- *
- * @author Luis Majano
- */
-interface {
+component extends="cbfs.models.AbstractDiskProvider"{
 
 	/**
 	 * Get the unique UUID identifier for this disk
@@ -39,7 +32,7 @@ interface {
 	 * @name       The name of the disk
 	 * @properties A struct of configuration data for this provider, usually coming from the configuration file
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 */
 	any function startup( required string name, struct properties = {} );
 
@@ -47,7 +40,7 @@ interface {
 	 * Called before the cbfs module is unloaded, or via reinits. This can be implemented
 	 * as you see fit to gracefully shutdown connections, sockets, etc.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 */
 	any function shutdown();
 
@@ -61,7 +54,7 @@ interface {
 	 * @override   Flag to overwrite the file at the destination, if it exists. Defaults to true.
 	 * @mode       Applies to *nix systems. If passed, it overrides the visbility argument and uses these octal values instead
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.FileOverrideException - When a file exists and no override has been provided
 	 */
@@ -75,12 +68,21 @@ interface {
 	);
 
 	/**
+	 * Uploads a file in to the disk
+	 *
+	 * @fieldName The file field name
+	 * @directory the directory on disk to upload to
+	 * @overload  We can overload the default because we can go directly to the disk with the file
+	 */
+	function upload( required fieldName, required directory );
+
+	/**
 	 * Set the storage visibility of a file, available options are `public, private, readonly` or a custom data type the implemented driver can interpret
 	 *
 	 * @path       The target file
 	 * @visibility The storage visibility of the file, available options are `public, private, readonly` or a custom data type the implemented driver can interpret
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.FileNotFoundException
 	 */
@@ -106,7 +108,7 @@ interface {
 	 * @metadata       Struct of metadata to store with the file
 	 * @throwOnMissing Boolean flag to throw if the file is missing. Otherwise it will be created if missing.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.FileNotFoundException
 	 */
@@ -126,7 +128,7 @@ interface {
 	 * @metadata       Struct of metadata to store with the file
 	 * @throwOnMissing Boolean flag to throw if the file is missing. Otherwise it will be created if missing.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.FileNotFoundException
 	 */
@@ -144,7 +146,7 @@ interface {
 	 * @destination The end destination path
 	 * @override    Flag to overwrite the file at the destination, if it exists. Defaults to true.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.FileNotFoundException
 	 */
@@ -161,7 +163,7 @@ interface {
 	 * @destination The end destination path
 	 * @override    Flag to overwrite the file at the destination, if it exists. Defaults to true.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.FileNotFoundException
 	 */
@@ -226,13 +228,22 @@ interface {
 	 * @path       The file path
 	 * @createPath if set to false, expects all parent directories to exist, true will generate necessary directories. Defaults to true.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.PathNotFoundException
 	 */
 	function touch( required path, boolean createpath );
 
 	/**************************************** UTILITY METHODS ****************************************/
+
+	/**
+	 * Get the full url for the given file
+	 *
+	 * @path The file path to build the uri for
+	 *
+	 * @throws cbfs.FileNotFoundException
+	 */
+	string function url( required string path )
 
 	/**
 	 * Get the URI for the given file
@@ -319,7 +330,7 @@ interface {
 	 * @path The file path
 	 * @mode Access mode, the same attributes you use for the Linux command `chmod`
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 */
 	function chmod( required string path, required string mode );
 
@@ -331,7 +342,7 @@ interface {
 	 * @link   The path of the symbolic link to create
 	 * @target The target of the symbolic link
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws UnsupportedOperationException - if the implementation does not support symbolic links
 	 */
@@ -441,7 +452,7 @@ interface {
 	 * @createPath   Create parent directory paths when they do not exist. The default is true
 	 * @ignoreExists If false, it will throw an error if the directory already exists, else it ignores it if it exists. This should default to true.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws DirectoryExistsException - If the directory you are trying to create already exists and <code>ignoreExists</code> is true
 	 */
@@ -465,7 +476,7 @@ interface {
 	 * @filter      A string file extension filter to apply like *.jpg or server-*.json or a lambda/closure that receives the file path and should return true to copy it.
 	 * @createPath  If false, expects all parent directories to exist, true will generate all necessary directories. Default is true.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.DirectoryNotFoundException - When the source does not exist
 	 */
@@ -484,7 +495,7 @@ interface {
 	 * @destination The destination directory
 	 * @createPath  If false, expects all parent directories to exist, true will generate all necessary directories. Default is true.
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.DirectoryNotFoundException - When the old path does not exist
 	 */
@@ -517,7 +528,7 @@ interface {
 	 * @directory      The directory
 	 * @throwOnMissing Throws an exception if the directory does not exist, defaults to false
 	 *
-	 * @return cbfs.models.IDisk
+	 * @return cbfs.models.AbstractDiskProvider
 	 *
 	 * @throws cbfs.DirectoryNotFoundException
 	 */
@@ -693,6 +704,60 @@ interface {
 	 * @pattern The globbing pattern to match
 	 */
 	array function glob( required pattern );
+
+}
+
+```
+
+### Testing
+
+To create your own provider tests, create a new Spec which extends `cbfs.models.testing.AbstractDiskSpec`
+
+Within your `tests` directory you will need to add a file at `tests/resources/assets/binary_file.png` which will be used to test binary uploads for the provider you create.\
+\
+Example:
+
+```javascript
+omponent extends="cbfs.models.testing.AbstractDiskSpec" {
+
+	// The name of the provider in the test-harness we want to test
+	variables.providerName = "MyCustom";
+	variables.TEST_PATH    = expandPath( "/tests/storage" );
+	// Which features does this disk support for testing
+	variables.testFeatures = { symbolicLink : true };
+
+	function beforeAll(){
+		if ( directoryExists( variables.TEST_PATH ) ) {
+			directoryDelete( variables.TEST_PATH, true );
+		}
+		super.beforeAll();
+	}
+
+	function run(){
+		super.run();
+
+		// Localized Suites
+
+		describe( "MyCustom Provider Extended Specs", function(){
+			beforeEach( function( currentSpec ){
+				disk = getDisk();
+			} );
+
+			story( "I want to test some custom function in my provider", function(){
+				...
+			} );
+
+		} );
+	}
+
+	/**
+	 * ------------------------------------------------------------
+	 * Concrete Expectations that can be implemented by each provider
+	 * ------------------------------------------------------------
+	 */
+	function validateInfoStruct( required info, required disk ){
+		expect( info ).toHaveKey( "path,size,name,type,canWrite,canRead,isHidden" );
+	}
 
 }
 
