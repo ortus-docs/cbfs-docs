@@ -152,6 +152,21 @@ string function temporaryUri( required path, numeric expiration );
 disk.temporaryUri( expandPath( "myFile.txt", 60 ) );
 ```
 
+### url
+
+Retrives the full url for a resource
+
+```javascript
+/**
+ * Get the full url for the given file
+ *
+ * @path The file path to build the uri for
+ *
+ * @throws cbfs.FileNotFoundException
+ */
+string function url( required string path )
+```
+
 ### uri
 
 Gets the URI for the given file.

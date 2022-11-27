@@ -88,3 +88,13 @@ The `local` provider has a shortcut of `Local` or it can be fully referenced via
 ### Ram
 
 The `ram` provider has a shortcut of `Ram` or it can be fully referenced via its WireBox ID `RamProvider@cbfs`. It also does not have any configuration properties.
+
+### S3
+
+The `s3` disk provider has a shortcut of `S3` and can be used to create a storage disk with any AWS S3 compatible API.  This provider uses all of the available properties of the [S3SDK](https://github.com/coldbox-modules/s3sdk#coldbox-module) which pass through to the instance when the disk is created. Additional properties are:&#x20;
+
+| Property       | Type   | Default  | Description                                                                                             |
+| -------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------- |
+| `publicDomain` | string | ---      | Will be the public domain in URLs generated - for example, when using a CDN distribution via CloudFront |
+| `visibility`   | string | `public` | Whether the contents of the disk are public (world read ) or private                                    |
+| `bucketName`   | string | ---      | The bucket name, within which this disk operates.                                                       |
