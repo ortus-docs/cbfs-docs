@@ -74,6 +74,12 @@ By default, we register two disks in your ColdBox application.
 
 The available providers are listed below with their appropriate properties to configure them.
 
+All providers share the following properties:
+
+| Property           | Type   | Default | Description                                                                 |
+| ------------------ | ------ | ------- | --------------------------------------------------------------------------- |
+| `uploadMimeAccept` | string | `*`     | The mime types which are accepted via the `upload` method. Defaults to all. |
+
 ### Local
 
 The `local` provider has a shortcut of `Local` or it can be fully referenced via its WireBox ID `LocalProvider@cbfs`. The available properties are:
