@@ -6,7 +6,10 @@
 
 * [Installation](getting-started/installation.md)
 * [Configuration](getting-started/configuration.md)
-* [Providers](getting-started/providers.md)
+* [Providers](getting-started/providers/README.md)
+  * [Local Provider](getting-started/providers/local-provider.md)
+  * [RAM Provider](getting-started/providers/ram-provider.md)
+  * [S3 Provider](getting-started/providers/s3-provider.md)
 * [Disk Service](getting-started/disk-service.md)
 * [Disk Instance](getting-started/disk-instance.md)
   * [Configuration Methods](getting-started/disk-instance/configuration-methods.md)
