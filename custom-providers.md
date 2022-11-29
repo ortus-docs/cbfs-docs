@@ -255,16 +255,6 @@ component extends="cbfs.models.AbstractDiskProvider"{
 	string function uri( required string path );
 
 	/**
-	 * Get a temporary URI for the given file
-	 *
-	 * @path       The file path to build the URI for
-	 * @expiration The number of minutes this URI should be valid for
-	 *
-	 * @throws cbfs.FileNotFoundException
-	 */
-	string function temporaryUri( required path, numeric expiration );
-
-	/**
 	 * Retrieve the size of the file in bytes
 	 *
 	 * @path The file path location
