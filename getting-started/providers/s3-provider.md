@@ -55,4 +55,3 @@ This provider uses the [s3sdk](https://forgebox.io/view/s3sdk) library under the
 | uploadMimeAccept  | string | \*      | The mime types which are accepted via the upload method. Defaults to all.                               |
 | publicDomain      | string | --      | Will be the public domain in URLs generated - for example, when using a CDN distribution via CloudFront |
 | visibility        | string | public  | Whether the contents of the disk are public (world read ) or private                                    |
-|                   |        |         |                                                                                                         |

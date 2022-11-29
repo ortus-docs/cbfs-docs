@@ -48,7 +48,7 @@ Returns the count of registered disks.
 
 ### defaultDisk()
 
-Return an instance of the default disk defined in your [configuration](broken-reference).
+Return an instance of the default disk defined in your [configuration](configuration.md).
 
 ### get( name )
 
