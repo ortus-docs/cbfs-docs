@@ -117,7 +117,7 @@ Validate if a file exists.
 /**
  * @path The file path to verify
  */
-boolean function fileExists( required string path );
+boolean function exists( required string path );
 ```
 
 ### missing
@@ -128,7 +128,7 @@ Validate if a file doesn't exist.
 /**
  * @path The file path to verify
  */
-boolean function fileMissing( required string path );
+boolean function missing( required string path );
 ```
 
 ### get
