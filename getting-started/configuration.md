@@ -3,7 +3,7 @@
 In your `config/ColdBox.cfc` create a cbfs structure within the `moduleSettings` key. Here you will define your storage disks and global settings for the cbfs storage services.
 
 {% hint style="info" %}
-Each provider has its own configuration properties. Please review this book for additional information on each provider.
+Each provider has its own configuration properties. Please review the [Providers](configuration.md#providers) for additional information.
 {% endhint %}
 
 ```javascript
