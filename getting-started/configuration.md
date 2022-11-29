@@ -80,16 +80,7 @@ All providers share the following properties:
 | ------------------ | ------ | ------- | --------------------------------------------------------------------------- |
 | `uploadMimeAccept` | string | `*`     | The mime types which are accepted via the `upload` method. Defaults to all. |
 
-### Local
 
-The `local` provider has a shortcut of `Local` or it can be fully referenced via its WireBox ID `LocalProvider@cbfs`. The available properties are:
-
-
-
-| Property     | Type    | Default | Description                                                                             |
-| ------------ | ------- | ------- | --------------------------------------------------------------------------------------- |
-| `path`       | string  | ---     | The relative or absolute path of where to store the file system.                        |
-| `autoExpand` | boolean | false   | If true, it will use an `expandPath()` on the `path` property. Else it leaves it as is. |
 
 ### Ram
 
