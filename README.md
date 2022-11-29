@@ -20,7 +20,6 @@ The available storage providers are:
 ## System Requirements
 
 * Lucee 5+
-* Adobe ColdFusion 2016 (Deprecated)
 * Adobe ColdFusion 2018+
 * Java 11+
 
