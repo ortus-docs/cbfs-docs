@@ -82,8 +82,15 @@ Uploads a file directly in to disk storage
  *
  * @fieldName The file field name
  * @directory the directory on disk to upload to
+ * @fileName  optional file name on the disk
+ * @overwrite whether to overwrite ( defaults to false )
  */
-function upload( required fieldName, required directory );
+function upload(
+	required fieldName,
+	required directory,
+	string fileName,
+	string overwrite = false
+);
 ```
 
 ### delete
