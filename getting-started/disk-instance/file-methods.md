@@ -109,7 +109,7 @@ Delete a file or an array of file paths. If a file does not exist, `false` will 
 boolean function delete( required any path, boolean throwOnMissing = false );
 ```
 
-### fileExists
+### exists
 
 Validate if a file exists.
 
@@ -120,7 +120,7 @@ Validate if a file exists.
 boolean function fileExists( required string path );
 ```
 
-### fileMissing
+### missing
 
 Validate if a file doesn't exist.
 
