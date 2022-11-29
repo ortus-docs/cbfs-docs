@@ -5,7 +5,6 @@
 ## Getting Started
 
 * [Installation](getting-started/installation.md)
-* [Configuration](getting-started/configuration.md)
 * [Providers](getting-started/providers/README.md)
   * [Local Provider](getting-started/providers/local-provider.md)
   * [RAM Provider](getting-started/providers/ram-provider.md)
