@@ -122,7 +122,7 @@ boolean function exists( required string path );
 
 ### file
 
-Returns a [File Object](../disk-usage/file-object.md) that you can use for simpler API access
+Returns a [File Object](../disk-usage/file-object.md) that you can use for simpler API access.
 
 ```javascript
 /**
