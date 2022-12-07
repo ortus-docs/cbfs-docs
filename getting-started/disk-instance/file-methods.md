@@ -120,6 +120,20 @@ Validate if a file exists.
 boolean function exists( required string path );
 ```
 
+### file
+
+Returns a [File Object](../disk-usage/file-object.md) that you can use for simpler API access
+
+```javascript
+/**
+ * Returns a File object for simplier API access
+ *
+ * @path The file path to check
+ * @contents The contents of the file to set
+ */
+File function file( required path, contents );
+```
+
 ### missing
 
 Validate if a file doesn't exist.

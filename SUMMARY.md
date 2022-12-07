@@ -13,6 +13,7 @@
 * [Disk Usage](getting-started/disk-instance.md)
   * [Configuration Methods](getting-started/disk-instance/configuration-methods.md)
   * [File Methods](getting-started/disk-instance/file-methods.md)
+  * [File Object](getting-started/disk-usage/file-object.md)
   * [Directory Methods](getting-started/disk-instance/directory-methods.md)
   * [Utility Methods](getting-started/disk-instance/utility-methods.md)
   * [Stream Methods](getting-started/disk-instance/stream-methods.md)
