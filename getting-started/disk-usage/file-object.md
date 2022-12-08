@@ -5,7 +5,7 @@ The CBFS File object gives you simplied access to the disk API.
 To create a new file object, you an use:
 
 ```javascript
-var file = disk.fsomeile( "some/path/somefile.txt" );
+var file = disk.file( "some/path/somefile.txt" );
 ```
 
 Then you can access any of the api methods documented here. Enjoy!
@@ -121,7 +121,7 @@ Delete a file or an array of file paths. If a file does not exist a `false` will
  *
  * @throws cbfs.FileNotFoundException
  */
-public boolean function delete( boolean throwOnMissing = false );
+boolean function delete( boolean throwOnMissing = false );
 ```
 
 ## exists
@@ -354,5 +354,5 @@ Get the storage visibility of a file. The return format can be a string of `publ
 /**
 * @return String
 */
-public string function visibility();
+string function visibility();
 ```
