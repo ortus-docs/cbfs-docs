@@ -1,5 +1,23 @@
 # File Object
 
+The CBFS File object gives you simplied access to the disk API.
+
+To create a new file object, you an use:
+
+```javascript
+var file = disk.fsomeile( "some/path/somefile.txt" );
+```
+
+Then you can access any of the api methods documented here. Enjoy!
+
+```javascript
+var file = disk.file( "somefile.txt" )
+                .create( "some contents" )
+                .append( "append contents" );
+                
+var mimeType = file.mimeType(); // returns 'text/plain'
+```
+
 ## append
 
 Append contents to the end of a file.
