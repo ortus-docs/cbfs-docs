@@ -1,5 +1,9 @@
 # Stream Methods
 
+{% hint style="info" %}
+The stream methods are only available for the LocalProvider currently.
+{% endhint %}
+
 ### stream
 
 Returns a Java stream of the file using non-blocking IO classes. The stream will represent every line in the file so you can navigate through it.
