@@ -1,3 +1,7 @@
+---
+description: Learn how to build your own storage providers
+---
+
 # Custom Providers
 
 You can implement your own custom Disk Provider into your applications by extending `cbfs.models.AbstractDiskProvider` and creating a provider which includes all of the methods listed in the sample component below:

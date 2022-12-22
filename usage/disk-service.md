@@ -1,12 +1,22 @@
+---
+description: >-
+  cbfs includes a Disk Service object you can use to register and interact with
+  your disks.
+---
+
 # Disk Service
 
-cbfs includes a Disk Service object you can use to register and interact with your disks.
-
-The full API for the Disk Service can be found in the [API Docs](https://apidocs.ortussolutions.com/#/coldbox-modules/cbfs/).
+dThe full API for the Disk Service can be found in the [API Docs](https://apidocs.ortussolutions.com/#/coldbox-modules/cbfs/).
 
 ## Injection DSL
 
 The cbfs module registers a WireBox injection DSL that you can use to inject objects from the module.
+
+| DSL                | Description                                 |
+| ------------------ | ------------------------------------------- |
+| `cbfs`             | Inject the Disk Service                     |
+| `cbfs:disks`       | Inject the entire disk records              |
+| `cbfs:disks{name}` | Inject a specific disk instance by `{name}` |
 
 ```javascript
 // Injects the DiskService
@@ -28,7 +38,7 @@ property name="tempDisk" inject="cbfs:disks:temp";
 
 ## Helper Method
 
-The cbfs module registers a helper method called `cbfs( diskName )` that you can use in your handlers, layouts, and views.
+The cbfs module registers a helper method called `cbfs( diskName )` that you can use in your handlers, layouts, and views to get an instance of a specific disk:
 
 ```javascript
 // SomeHandler.cfc
@@ -52,7 +62,7 @@ Return an instance of the default disk defined in your [configuration](broken-re
 
 ### get( name )
 
-Returns requested disk instance. Throws 'InvalidDiskException' if the disk is not registered.
+Returns requested disk instance. Throws `InvalidDiskException` if the disk is not registered.
 
 ### getDiskRecord( name )
 
@@ -80,4 +90,4 @@ Returns the temporary disk.
 
 ### unregister( name )
 
-Unregisters a disk. Throws 'InvalidDiskException' if the disk is not registered.
+Unregisters a disk. Throws `InvalidDiskException` if the disk is not registered.

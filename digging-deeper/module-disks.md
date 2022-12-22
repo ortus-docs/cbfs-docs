@@ -1,9 +1,12 @@
-# Module Configuration
+---
+description: Use HMVC and define module disks
+---
+
+# Module Disks
 
 If you are creating your own ColdBox modules, you can create disks from those modules in the configure() lifecycle method in ModuleConfig.cfc.
 
 ```javascript
-
 component {
 	function configure(){
 		settings = {

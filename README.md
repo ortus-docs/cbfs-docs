@@ -4,7 +4,7 @@ description: cbfs is a module for ColdBox that provides abstractions to any file
 
 # Introduction
 
-<figure><img src=".gitbook/assets/CleanShot 2022-08-29 at 14.02.25.png" alt=""><figcaption><p>The best way to abstract your files!</p></figcaption></figure>
+<figure><img src=".gitbook/assets/CBFS-M.png" alt=""><figcaption><p>ColdBox File System Abstraction = cbfs</p></figcaption></figure>
 
 The `cbfs` module will enable you to abstract **ANY** filesystem within your ColdBox applications. You can configure as many disks as you wish to represent file systems in your application. Each disk is backed by a storage provider and configurable within your ColdBox application.
 

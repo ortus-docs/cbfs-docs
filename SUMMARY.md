@@ -14,17 +14,20 @@
   * [Local Provider](getting-started/providers/local-provider.md)
   * [RAM Provider](getting-started/providers/ram-provider.md)
   * [S3 Provider](getting-started/providers/s3-provider.md)
-* [Disk Service](getting-started/disk-service.md)
-* [Disk Usage](getting-started/disk-instance.md)
-  * [Configuration Methods](getting-started/disk-instance/configuration-methods.md)
-  * [File Methods](getting-started/disk-instance/file-methods.md)
-  * [File Object](getting-started/disk-usage/file-object.md)
-  * [Directory Methods](getting-started/disk-instance/directory-methods.md)
-  * [Utility Methods](getting-started/disk-instance/utility-methods.md)
-  * [Stream Methods](getting-started/disk-instance/stream-methods.md)
-  * [Verification Methods](getting-started/disk-instance/verification-methods.md)
 
-***
+## Usage
 
-* [Module Configuration](module-configuration.md)
-* [Custom Providers](custom-providers.md)
+* [Disk Service](usage/disk-service.md)
+* [Disk Usage](usage/disk-usage/README.md)
+  * [Configuration Methods](usage/disk-usage/configuration-methods.md)
+  * [File Methods](usage/disk-usage/file-methods.md)
+  * [File Object](usage/disk-usage/file-object.md)
+  * [Directory Methods](usage/disk-usage/directory-methods.md)
+  * [Utility Methods](usage/disk-usage/utility-methods.md)
+  * [Stream Methods](usage/disk-usage/stream-methods.md)
+  * [Verification Methods](usage/disk-usage/verification-methods.md)
+
+## Digging Deeper
+
+* [Module Disks](digging-deeper/module-disks.md)
+* [Custom Providers](digging-deeper/custom-providers.md)

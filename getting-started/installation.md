@@ -6,12 +6,12 @@ description: Get up and running with cbfs in no time!
 
 Use [CommandBox CLI](https://www.ortussolutions.com/products/commandbox) to install:
 
-```
-box install cbfs
+```bash
+install cbfs
 ```
 
 To install the bleeding-edge version:
 
-```
-box install cbfs@be
+```bash
+install cbfs@be
 ```
