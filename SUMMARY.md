@@ -2,6 +2,11 @@
 
 * [Introduction](README.md)
 
+## Intro
+
+* [Release History](intro/release-history.md)
+* [About This Book](intro/about-this-book.md)
+
 ## Getting Started
 
 * [Installation](getting-started/installation.md)
