@@ -82,7 +82,7 @@ Please note that you can change the location of these disks by adding the config
 
 ### Default Disk
 
-You can use the `defaultDisk` key to specify which disk will be the `default` in your system.  By `default` it's the `default` one :joy: which is not web-accesible and stored as `.cbfs` in your root application.
+You can use the `defaultDisk` key to specify which disk will be the `default` in your system.  By `default` it's the `default` one :joy: which is not web-accessible and stored as `.cbfs` in your root application.
 
 ### Registering Disks
 

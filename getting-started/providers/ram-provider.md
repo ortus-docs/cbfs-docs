@@ -1,3 +1,7 @@
+---
+description: The RAM provider leverages memory allocation for its file-system
+---
+
 # RAM Provider
 
 Use the RAM provider to store files within available RAM.
@@ -33,6 +37,6 @@ moduleSettings = {
 
 When configuring your RAM disks, the following properties are available:
 
-| Property         | Type   | Default | Description                                                               |
-| ---------------- | ------ | ------- | ------------------------------------------------------------------------- |
-| uploadMimeAccept | string | \*      | The mime types which are accepted via the upload method. Defaults to all. |
+| Property           | Type     | Default | Description                                                               |
+| ------------------ | -------- | ------- | ------------------------------------------------------------------------- |
+| `uploadMimeAccept` | `string` | \*      | The mime types which are accepted via the upload method. Defaults to all. |

@@ -8,11 +8,11 @@ description: cbfs is a module for ColdBox that provides abstractions to any file
 
 The `cbfs` module will enable you to abstract **ANY** filesystem within your ColdBox applications with a human, fluent, and consistent API. You can configure as many disks as you wish to represent file systems in your application. Each disk is backed by a storage provider and configurable within your ColdBox application.  Each ColdBox Module can also provide and consume disks in an HMVC fashion.
 
-Never worry about hard-coded paths or how to interact with different file-systems or differrent tiers as your API will remain the same for each system.
+Never worry about hard-coded paths or how to interact with different file systems or different tiers as your API will remain the same for each system.
 
 ## Storage Providers
 
-The available storage providers are:
+The available storage providers are
 
 * **Local** - A local file system storage provider.
 * **Ram** - An in-memory file storage provider.
@@ -36,7 +36,7 @@ And constructed with the following guidelines:
 
 * Breaking backward compatibility bumps the major (and resets the minor and patch)
 * New additions without breaking backward compatibility bump the minor (and reset the patch)
-* Bug fixes and misc changes bump the patch
+* Bug fixes and miscellaneous changes bump the patch
 
 ## License
 
@@ -54,7 +54,7 @@ The ColdBox Platform, `cbfs` is open source and licensed under the [Apache 2](ht
 
 ![Ortus Solutions, Corp](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-LA-UVvG0NM7NpDzssBL%2F-LA-Uaei0WzTH7Su5CR7%2F-LA-UqN1BRXynZ7RUVO7%2Fortussolutions\_button.png?generation=1523647999385555\&alt=media)
 
-The ColdBox Security Module is a professional open source software backed by [Ortus Solutions, Corp](http://www.ortussolutions.com/services) offering services like:
+The ColdBox Security Module is a professional open-source software backed by [Ortus Solutions, Corp](http://www.ortussolutions.com/services) offering services like:
 
 * Custom Development
 * Professional Support & Mentoring
