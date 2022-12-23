@@ -6,7 +6,9 @@ description: cbfs is a module for ColdBox that provides abstractions to any file
 
 <figure><img src=".gitbook/assets/CBFS-M.png" alt=""><figcaption><p>ColdBox File System Abstraction = cbfs</p></figcaption></figure>
 
-The `cbfs` module will enable you to abstract **ANY** filesystem within your ColdBox applications. You can configure as many disks as you wish to represent file systems in your application. Each disk is backed by a storage provider and configurable within your ColdBox application.
+The `cbfs` module will enable you to abstract **ANY** filesystem within your ColdBox applications with a human, fluent, and consistent API. You can configure as many disks as you wish to represent file systems in your application. Each disk is backed by a storage provider and configurable within your ColdBox application.  Each ColdBox Module can also provide and consume disks in an HMVC fashion.
+
+Never worry about hard-coded paths or how to interact with different file-systems or differrent tiers as your API will remain the same for each system.
 
 ## Storage Providers
 

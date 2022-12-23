@@ -23,8 +23,4 @@ We highly encourage contributions to this book and our open-source software. The
 
 ### Charitable Proceeds <a href="#charitable-proceeds" id="charitable-proceeds"></a>
 
-10% of the proceeds of this book will go to charity to support orphaned kids in El Salvador - [https://www.harvesting.org/](https://www.harvesting.org/). So please donate and purchase the printed version of this book, every book sold can help a child for almost 2 months.
-
-#### Shalom Children's Home <a href="#shalom-childrens-home" id="shalom-childrens-home"></a>
-
 **Shalom Children’s Home** is one of the ministries that are dear to our hearts located in El Salvador. During the 12-year civil war that ended in 1990, many children were left orphaned or abandoned by parents who fled El Salvador. The Benners saw the need to help these children and received 13 children in 1982. Little by little, more children came on their own, churches and the government brought children to them for care, and the Shalom Children’s Home was founded.Shalom now cares for over 80 children in El Salvador, from newborns to 18 years old. They receive shelter, clothing, food, medical care, education and life skills training in a Christian environment. The home is supported by a child sponsorship program.We have personally supported Shalom for over 6 years now; it is a place of blessing for many children in El Salvador that either have no families or have been abandoned. This is good earth to seed and plant
