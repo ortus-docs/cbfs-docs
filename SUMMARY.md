@@ -29,6 +29,6 @@
 
 ## Digging Deeper
 
-* [Interception Points](digging-deeper/interception-points.md)
+* [Interceptors](digging-deeper/interceptors.md)
 * [Module Disks](digging-deeper/module-disks.md)
 * [Custom Providers](digging-deeper/custom-providers.md)
