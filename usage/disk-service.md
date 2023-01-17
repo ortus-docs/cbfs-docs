@@ -12,11 +12,11 @@ dThe full API for the Disk Service can be found in the [API Docs](https://apidoc
 
 The cbfs module registers a WireBox injection DSL that you can use to inject objects from the module.
 
-| DSL                | Description                                 |
-| ------------------ | ------------------------------------------- |
-| `cbfs`             | Inject the Disk Service                     |
-| `cbfs:disks`       | Inject the entire disk records              |
-| `cbfs:disks{name}` | Inject a specific disk instance by `{name}` |
+| DSL                 | Description                                 |
+| ------------------- | ------------------------------------------- |
+| `cbfs`              | Inject the Disk Service                     |
+| `cbfs:disks`        | Inject the entire disk records              |
+| `cbfs:disks:{name}` | Inject a specific disk instance by `{name}` |
 
 ```javascript
 // Injects the DiskService
