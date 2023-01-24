@@ -6,9 +6,9 @@ description: cbfs is a module for ColdBox that provides abstractions to any file
 
 <figure><img src=".gitbook/assets/CBFS-M.png" alt=""><figcaption><p>ColdBox File System Abstraction = cbfs</p></figcaption></figure>
 
-The `cbfs` module will enable you to abstract **ANY** filesystem within your ColdBox applications with a human, fluent, and consistent API. You can configure as many disks as you wish to represent file systems in your application. Each disk is backed by a storage provider and configurable within your ColdBox application.  Each ColdBox Module can also provide and consume disks in an HMVC fashion.
+The cbfs module will enable you to abstract **ANY** filesystem within your ColdBox applications with a human, fluent, and consistent API. You can configure as many disks as you wish to represent file systems in your application. Each disk is backed by a storage provider and configurable within your ColdBox application. Each ColdBox Module can also provide and consume disks in an HMVC fashion.
 
-Never worry about hard-coded paths or how to interact with different file systems or different tiers as your API will remain the same for each system.
+Never worry about hard-coded paths or how to interact with different file systems or tiers, as your API will remain the same for each system.
 
 ## Storage Providers
 
@@ -43,7 +43,7 @@ And constructed with the following guidelines:
 The ColdBox Platform, `cbfs` is open source and licensed under the [Apache 2](http://www.apache.org/licenses/LICENSE-2.0.html) License.
 
 * Copyright by Ortus Solutions, Corp
-* ColdBox, CacheBox, WireBox, and LogBox are registered trademarks by Ortus Solutions, Corp.
+* ColdBox, CacheBox, WireBox, and LogBox are registered trademarks of Ortus Solutions, Corp.
 
 ## Important Links <a href="#important-links" id="important-links"></a>
 
@@ -72,6 +72,6 @@ The Box products and modules community for discussion and help can be found here
 
 ### HONOR GOES TO GOD ABOVE ALL <a href="#honor-goes-to-god-above-all" id="honor-goes-to-god-above-all"></a>
 
-Because of His grace, this project exists. If you don't like this, then don't read it, it's not for you.
+Because of His grace, this project exists. If you don't like this, don't read it; it's not for you.
 
 > "Therefore being justified by **faith**, we have peace with God through our Lord Jesus Christ: By whom also we have access by **faith** into this **grace** wherein we stand, and rejoice in hope of the glory of God." Romans 5:5
