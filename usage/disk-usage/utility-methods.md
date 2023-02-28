@@ -135,21 +135,21 @@ numeric function size( required path );
 disk.size( expandPath( "myFile.txt" ) ); // returns 2097152
 ```
 
-### temporaryURI
+### temporaryUrl
 
 Gets a temporary URI for the given file.
 
 ```javascript
 /**
- * @path       The file path to build the uri for
- * @expiration The number of minutes this uri should be valid for.
+ * @path       The file path to build the url for
+ * @expiration The number of minutes this url should be valid for.
  *
  * @throws cbfs.FileNotFoundException
  */
-string function temporaryUri( required path, numeric expiration );
+string function temporaryUrl( required path, numeric expiration );
 
 // Example
-disk.temporaryUri( expandPath( "myFile.txt", 60 ) );
+disk.temporaryUrl( expandPath( "myFile.txt", 60 ) );
 ```
 
 ### url
@@ -167,18 +167,4 @@ Retrives the full url for a resource
 string function url( required string path )
 ```
 
-### uri
-
-Gets the URI for the given file.
-
-```javascript
-/**
- * @path The file path to build the uri for
- *
- * @throws cbfs.FileNotFoundException
- */
-string function uri( required string path );
-
-// Example
-disk.uri( expandPath( "myFile.txt" ) );
-```
+###

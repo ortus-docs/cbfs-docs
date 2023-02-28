@@ -26,7 +26,7 @@ Use the local provider to store files in a local filesystem where your applicati
 					.getRequestService()
 					.getContext()
 					.getHtmlBaseUrl()
-					&#x26; "storage/.mystorage/";
+					&#x26; "storage/.mystorage";
 			}
 		}
 	  }
