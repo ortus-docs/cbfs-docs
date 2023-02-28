@@ -21,11 +21,13 @@ Use the local provider to store files in a local filesystem where your applicati
 		"provider"   : "Local",
 		"properties" : { 
 			"path" : "#controller.getAppRootPath()#.myStorage",
-			"diskUrl" : controller
-				.getRequestService()
-				.getContext()
-				.getHtmlBaseUrl()
-				&#x26; "storage/.mystorage"
+			"diskUrl" : function(){
+				return variables.controller
+					.getRequestService()
+					.getContext()
+					.getHtmlBaseUrl()
+					&#x26; "storage/.mystorage";
+			}
 		}
 	  }
 	}
