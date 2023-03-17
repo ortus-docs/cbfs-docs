@@ -74,3 +74,52 @@ This provider uses the [s3sdk](https://forgebox.io/view/s3sdk) library under the
 | `throwOnRequestError` | boolean | `true`                              |                                                                                                         |
 | `uploadMimeAccept`    | string  | \*                                  | The mime types which are accepted via the upload method. Defaults to all.                               |
 | `visibility`          | string  | public                              | Whether the contents of the disk are public (world read ) or private                                    |
+
+### Bucket Configuration Considerations
+
+File operations, including the setting of permissions on objects within an AWS bucket require both configuration settings to the bucket and to the user account, in order to all CBFS operations.
+
+#### User Permissions
+
+In the IAM section of the AWS Manager, your user account should, at minimum have an ACL policy that grants them access to all S3 operations on the bucket.  Below is an example of a JSON IAM policy which grants an AWS user access to all bucket operations - including encryption and decryption if that feature is enabled on the bucket:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Stmt1412062044000",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*",
+                "kms:Decrypt",
+                "kms:Encrypt",
+                "kms:GenerateDataKey"
+            ],
+            "Resource": [
+                "arn:aws:s3:::my-bucket-name",
+                "arn:aws:s3:::my-bucket-name/*"
+            ]
+        }
+    ]
+}
+```
+
+#### Bucket Permissions
+
+When creating a bucket to be used with CBFS operations, some initial settings need to be configured, in order for the user you created to perform permissions operations on objects within the bucket.  For a non-root user account to perform operations, the following changes to the default configuration must be performed:
+
+1.  Enable ACL's in the **Permissions > Object Ownership**\
+    ****\
+    ****
+
+    <figure><img src="../../.gitbook/assets/AWS-Bucket-Ownership-Settings.jpg" alt=""><figcaption></figcaption></figure>
+2.  Edit **Permissions > Block Public Access** to allow the IAM users to set their own permissions on objects created. If your bucket is private this will allow the explicit settings for those objects to be peformed.\
+    \
+
+
+    <figure><img src="../../.gitbook/assets/AWS-Public-Access-Settings.jpg" alt=""><figcaption></figcaption></figure>
+
+Note that we have disabled the inheritance settings above, which allows new ACL policies to be created on object, but still disables any cross-account ACL settings, for security.
+
+For public buckets, it is also recommended that you complete the Permissions > CORS section to allow access to your objects only from specific domain referrers.
