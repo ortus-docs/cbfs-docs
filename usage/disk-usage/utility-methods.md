@@ -143,13 +143,32 @@ Gets a temporary URI for the given file.
 /**
  * @path       The file path to build the url for
  * @expiration The number of minutes this url should be valid for.
+ * @responseHeaders A struct of headers to be forced for the HTTP response of GET requests.  Valid options are content-type, content-language, cache-control, content-disposition, content-encoding
  *
  * @throws cbfs.FileNotFoundException
  */
-string function temporaryUrl( required path, numeric expiration );
+string function temporaryUrl( required path, numeric expiration, struct responseHeaders );
 
 // Example
 disk.temporaryUrl( expandPath( "myFile.txt", 60 ) );
+
+```
+
+With the S3 provider, you can specify a struct of response headers to control the URL constructed. For example, to generate a URL that ensures a file is returned with the MIME type 'text/plain', you could pass that into temporaryURL().
+
+```javascript
+disk.temporaryURL( path="somefile.txt", expiration=60, responseHeaders= {
+    "content-type": "text/plain"
+} );
+
+# All arguments
+disk.temporaryURL( path="somefile.txt", expiration=60, responseHeaders= {
+    "content-type"        : "custom-type",
+    "content-language"    : "custom-language",
+    "cache-control"       : "custom-cache",
+    "content-disposition" : "custom-disposition",
+    "content-encoding"    : "custom-encoding"
+} );
 ```
 
 ### url
