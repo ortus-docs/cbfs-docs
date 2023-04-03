@@ -335,6 +335,17 @@ function stream(){
 };
 ```
 
+## temporaryURL
+
+Get a temporary URL for the given file.
+
+```javascript
+/**
+ * @expiration The number of minutes this url should be valid for. Defaults to 60 minutes
+ */
+string function temporaryUrl( numeric expiration = 60 );
+```
+
 ## touch
 
 Create a new empty file if it does not exist.
@@ -348,6 +359,17 @@ Create a new empty file if it does not exist.
 * @throws cbfs.PathNotFoundException
 */
 function touch( boolean createPath = true );
+```
+
+## url
+
+Gets the URL of a file.
+
+```javascript
+/**
+ * @throws cbfs.FileNotFoundException
+ */
+string function url();
 ```
 
 ## visibility
