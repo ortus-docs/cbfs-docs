@@ -49,31 +49,7 @@ moduleSettings = {
 
 This provider uses the [s3sdk](https://forgebox.io/view/s3sdk) library under the hood, and any of the properties that can be passed in are available, most of which are documented here.&#x20;
 
-| Property              | Type    | Default                             | Description                                                                                             |
-| --------------------- | ------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `autoContentType`     | boolean | `false`                             |                                                                                                         |
-| `autoMD5`             | boolean | `false`                             |                                                                                                         |
-| `accessKey`           | string  | --                                  | Your S3 access key                                                                                      |
-| `awsDomain`           | string  | --                                  | The domain name used to connect to your s3 service provider                                             |
-| `awsRegion`           | string  | --                                  | The region name used to connect to your s3 service provider                                             |
-| `cacheLookups`        | boolean | `true`                              |                                                                                                         |
-| `debug`               | boolean | `false`                             |                                                                                                         |
-| `defaultTimeout`      | numeric | 300                                 | The default timeout of the http operations                                                              |
-| `defaultDelimiter`    | string  | `/`                                 | Default delimiter to use                                                                                |
-| `defaultBucketName`   | string  | --                                  | The bucket name, within which this disk operates.                                                       |
-| `defaultCacheControl` | string  | no-store, no-cache, must-revalidate |                                                                                                         |
-| `defaultStorageClass` | string  | `STANDARD`                          |                                                                                                         |
-| `secretKey`           | string  | --                                  | Your S3 secret key                                                                                      |
-| `defaultACL`          | string  | `public-read`                       |                                                                                                         |
-| `encryptionCharset`   | string  | `UTF-8`                             | The encoding characterset                                                                               |
-| `publicDomain`        | string  | --                                  | Will be the public domain in URLs generated - for example, when using a CDN distribution via CloudFront |
-| `retriesOnError`      | numeric | `3`                                 |                                                                                                         |
-| `serviceName`         | string  | `s3`                                |                                                                                                         |
-| `signatureType`       | string  | `v4`                                | Which signature encoding to use, `v4` is the latest.                                                    |
-| `ssl`                 | boolean | `true`                              | Use SSL for all operations                                                                              |
-| `throwOnRequestError` | boolean | `true`                              |                                                                                                         |
-| `uploadMimeAccept`    | string  | \*                                  | The mime types which are accepted via the upload method. Defaults to all.                               |
-| `visibility`          | string  | public                              | Whether the contents of the disk are public (world read ) or private                                    |
+<table><thead><tr><th width="243">Property</th><th width="130">Type</th><th width="143">Default</th><th>Description</th></tr></thead><tbody><tr><td><code>autoContentType</code></td><td>boolean</td><td><code>false</code></td><td></td></tr><tr><td><code>autoMD5</code></td><td>boolean</td><td><code>false</code></td><td></td></tr><tr><td><code>accessKey</code></td><td>string</td><td>--</td><td>Your S3 access key</td></tr><tr><td><code>awsDomain</code></td><td>string</td><td>--</td><td>The domain name used to connect to your s3 service provider</td></tr><tr><td><code>awsRegion</code></td><td>string</td><td>--</td><td>The region name used to connect to your s3 service provider. Be sure your region is all lowercase, otherwise issues with pre-signed URLs can occur.</td></tr><tr><td><code>cacheLookups</code></td><td>boolean</td><td><code>true</code></td><td></td></tr><tr><td><code>debug</code></td><td>boolean</td><td><code>false</code></td><td></td></tr><tr><td><code>defaultTimeout</code></td><td>numeric</td><td>300</td><td>The default timeout of the http operations</td></tr><tr><td><code>defaultDelimiter</code></td><td>string</td><td><code>/</code></td><td>Default delimiter to use</td></tr><tr><td><code>defaultBucketName</code></td><td>string</td><td>--</td><td>The bucket name, within which this disk operates. </td></tr><tr><td><code>defaultCacheControl</code></td><td>string</td><td>no-store, no-cache, must-revalidate</td><td></td></tr><tr><td><code>defaultStorageClass</code></td><td>string</td><td><code>STANDARD</code></td><td></td></tr><tr><td><code>secretKey</code></td><td>string</td><td>--</td><td>Your S3 secret key</td></tr><tr><td><code>defaultACL</code></td><td>string</td><td><code>public-read</code></td><td></td></tr><tr><td><code>encryptionCharset</code></td><td>string</td><td><code>UTF-8</code></td><td>The encoding characterset</td></tr><tr><td><code>publicDomain</code></td><td>string</td><td>--</td><td>Will be the public domain in URLs generated - for example, when using a CDN distribution via CloudFront</td></tr><tr><td><code>retriesOnError</code></td><td>numeric</td><td><code>3</code></td><td></td></tr><tr><td><code>serviceName</code></td><td>string</td><td><code>s3</code></td><td></td></tr><tr><td><code>signatureType</code></td><td>string</td><td><code>v4</code></td><td>Which signature encoding to use, <code>v4</code> is the latest.</td></tr><tr><td><code>ssl</code></td><td>boolean</td><td><code>true</code></td><td>Use SSL for all operations</td></tr><tr><td><code>throwOnRequestError</code></td><td>boolean</td><td><code>true</code></td><td></td></tr><tr><td><code>uploadMimeAccept</code></td><td>string</td><td>*</td><td>The mime types which are accepted via the upload method. Defaults to all.</td></tr><tr><td><code>visibility</code></td><td>string</td><td>public</td><td>Whether the contents of the disk are public (world read ) or private</td></tr></tbody></table>
 
 ### Bucket Configuration Considerations
 
@@ -110,8 +86,8 @@ In the IAM section of the AWS Manager, your user account should, at minimum have
 When creating a bucket to be used with CBFS operations, some initial settings need to be configured, in order for the user you created to perform permissions operations on objects within the bucket.  For a non-root user account to perform operations, the following changes to the default configuration must be performed:
 
 1.  Enable ACL's in the **Permissions > Object Ownership**\
-    ****\
-    ****
+    \
+
 
     <figure><img src="../../.gitbook/assets/AWS-Bucket-Ownership-Settings.jpg" alt=""><figcaption></figcaption></figure>
 2.  Edit **Permissions > Block Public Access** to allow the IAM users to set their own permissions on objects created. If your bucket is private this will allow the explicit settings for those objects to be peformed.\
