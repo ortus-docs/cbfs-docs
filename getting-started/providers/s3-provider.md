@@ -76,7 +76,13 @@ In the IAM section of the AWS Manager, your user account should, at minimum have
                 "arn:aws:s3:::my-bucket-name",
                 "arn:aws:s3:::my-bucket-name/*"
             ]
-        }
+        },
+        {
+	    "Sid": "AllowListAllBuckets",
+	    "Effect": "Allow",
+	    "Action": "s3:ListAllMyBuckets",
+	    "Resource": "*"
+	}
     ]
 }
 ```
