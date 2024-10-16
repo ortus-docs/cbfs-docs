@@ -97,7 +97,8 @@ array function allFilesMap(
 	any filter,
 	sort,
 	boolean extended = false
-<strong>);</strong></code></pre>
+<strong>);
+</strong></code></pre>
 
 ### buildDiskPath
 
@@ -341,7 +342,7 @@ array function filesMap(
 
 ### isDirectory
 
-Returns boolean determining if a path is a directory or not.
+Returns a boolean determining if a path is a directory or not.
 
 ```javascript
 /**
@@ -349,9 +350,7 @@ Returns boolean determining if a path is a directory or not.
  *
  * @return true if the file is a directory; false if the file does not exist, is not a directory, or it cannot be determined if the file is a directory or not.
  */
-boolean function isDirectory( required path ){
-	return variables.jFiles.isDirectory( buildJavaDiskPath( arguments.path ), [] );
-};
+boolean function isDirectory( required path );
 ```
 
 ### moveDirectory
