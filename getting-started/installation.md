@@ -92,5 +92,5 @@ The `disks` structure is used to register disks in your application.  The `key` 
 * **properties** : A structure of configuration properties the disk requires (if any)
 
 {% hint style="info" %}
-Please check out the [providers ](providers/)section in order to see the properties and requirements for each one of them.
+Please check out the [providers](providers/README.md) section in order to see the properties and requirements for each one of them.
 {% endhint %}

@@ -4,6 +4,7 @@
 
 ## Intro
 
+* [Releases](intro/releases.md)
 * [Release History](intro/release-history.md)
 * [About This Book](intro/about-this-book.md)
 
@@ -32,3 +33,14 @@
 * [Interceptors](digging-deeper/interceptors.md)
 * [Module Disks](digging-deeper/module-disks.md)
 * [Custom Providers](digging-deeper/custom-providers.md)
+
+## Reference
+
+* [Reference](reference/README.md)
+  * [Disk Service](reference/disk-service.md)
+  * [Disk API](reference/disk-api.md)
+  * [File Object](reference/file-object.md)
+  * [Provider Capabilities](reference/provider-capabilities.md)
+  * [Configuration](reference/configuration.md)
+  * [Integration and Lifecycle](reference/integration.md)
+  * [Errors](reference/errors.md)

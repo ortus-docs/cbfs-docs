@@ -6,7 +6,7 @@ description: >-
 
 # Disk Service
 
-dThe full API for the Disk Service can be found in the [API Docs](https://apidocs.ortussolutions.com/#/coldbox-modules/cbfs/).
+The full API for the Disk Service can be found in the [Disk Service reference](../reference/disk-service.md). Generated [API Docs](https://apidocs.ortussolutions.com/#/coldbox-modules/cbfs/) are also available.
 
 ## Injection DSL
 
@@ -58,7 +58,7 @@ Returns the count of registered disks.
 
 ### defaultDisk()
 
-Return an instance of the default disk defined in your [configuration](broken-reference).
+Return an instance of the default disk defined in your [configuration](../reference/configuration.md).
 
 ### get( name )
 
