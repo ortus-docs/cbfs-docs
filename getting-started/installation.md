@@ -88,7 +88,7 @@ You can use the `defaultDisk` key to specify which disk will be the `default` in
 
 The `disks` structure is used to register disks in your application.  The `key` is the name of the disk which is a structure that each disk needs in order to be configured:
 
-* **provider** : The name of the provider (if core) or a full CFC path or WireBox ID
+* **provider** : The name of the provider (if core), a full class path, or a WireBox ID
 * **properties** : A structure of configuration properties the disk requires (if any)
 
 {% hint style="info" %}

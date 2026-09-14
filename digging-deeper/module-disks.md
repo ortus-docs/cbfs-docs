@@ -11,28 +11,45 @@ If you are creating your own ColdBox modules, you can create disks from those mo
 * `disks` : The collection of disks the module collaborates.  Each name will be suffixed with the module name: `key@moduleName`
 * `globalDisks` : A collection of global name spaced disks the module contributes to the entire application.
 
-<pre class="language-javascript"><code class="lang-javascript">component {
-<strong>  function configure(){
-</strong>	settings = {
-	  // CBFS Module
-	  cbfs : {
-		// Disks that will be namespaced with the module name @diskModule
-		// temp@diskModule
-		// nasa@diskModule
-		disks : {
-			"temp" : { provider : "Ram" },
-			"nasa" : { provider : "Ram" }
-		},
-		// No namespace in global spacing
-		// temp
-		// nasa
-		globalDisks : {
-			// Should be ignored, you can't override if it exists
-			"temp" : { provider : "Ram" },
-			"nasa" : { provider : "Ram" }
-		}
-	   }
-	};
-  }	
+{% tabs %}
+{% tab title="BoxLang" %}
+```boxlang
+class ModuleConfig {
+	function configure() {
+		settings = {
+			cbfs : {
+				disks : {
+					"temp" : { provider : "Ram" },
+					"nasa" : { provider : "Ram" }
+				},
+				globalDisks : {
+					"temp" : { provider : "Ram" },
+					"nasa" : { provider : "Ram" }
+				}
+			}
+		};
+	}
 }
-</code></pre>
+```
+{% endtab %}
+{% tab title="CFML" %}
+```cfml
+component {
+	function configure() {
+		settings = {
+			cbfs : {
+				disks : {
+					"temp" : { provider : "Ram" },
+					"nasa" : { provider : "Ram" }
+				},
+				globalDisks : {
+					"temp" : { provider : "Ram" },
+					"nasa" : { provider : "Ram" }
+				}
+			}
+		};
+	}
+}
+```
+{% endtab %}
+{% endtabs %}

@@ -4,9 +4,74 @@ description: Learn how to build your own storage providers
 
 # Custom Providers
 
-You can implement your own custom Disk Provider into your applications by extending `cbfs.models.AbstractDiskProvider` and creating a provider which includes all of the methods listed in the sample component below:
+You can implement your own custom Disk Provider by extending `cbfs.models.AbstractDiskProvider` and creating a class that includes the methods listed in the sample definition below. The complete contract is shown with BoxLang first and CFML second.
 
-```javascript
+{% tabs %}
+{% tab title="BoxLang" %}
+```boxlang
+class extends="cbfs.models.AbstractDiskProvider" {
+	string function getIdentifier();
+	boolean function hasStarted();
+	string function getName();
+	struct function getProperties();
+	any function startup( required string name, struct properties = {} );
+	any function shutdown();
+	function create( required path, required contents, string visibility, struct metadata, boolean overwrite = true, string mode );
+	function upload( required fieldName, required directory );
+	any function setVisibility( required string path, required string visibility );
+	string function visibility( required string path );
+	any function prepend( required string path, required contents, struct metadata, boolean throwOnMissing );
+	any function append( required string path, required contents, struct metadata, boolean throwOnMissing );
+	any function copy( required source, required destination, boolean overwrite = true );
+	any function move( required source, required destination, boolean overwrite = true );
+	any function get( required path );
+	any function getAsBinary( required path );
+	boolean function exists( required string path );
+	boolean function missing( required string path );
+	boolean function delete( required any path, boolean throwOnMissing );
+	function touch( required path, boolean createpath );
+	string function url( required string path );
+	string function uri( required string path );
+	numeric function size( required path );
+	function lastModified( required path );
+	function mimeType( required path );
+	struct function info( required path );
+	string function checksum( required path, algorithm );
+	string function name( required path );
+	string function extension( required path );
+	function chmod( required string path, required string mode );
+	function createSymbolicLink( required link, required target );
+	boolean function isFile( required path );
+	boolean function isWritable( required path );
+	boolean function isReadable( required path );
+	boolean function isExecutable( required path );
+	boolean function isHidden( required path );
+	boolean function isSymbolicLink( required path );
+	function stream( required path );
+	function streamOf( required array target );
+	boolean function isDirectory( required path );
+	function createDirectory( required directory, boolean createPath = true, boolean ignoreExists = true );
+	function copyDirectory( required source, required destination, boolean recurse = false, any filter, boolean createPath = true );
+	function moveDirectory( required source, required destination, boolean createPath = true );
+	boolean function deleteDirectory( required string directory, boolean recurse, boolean throwOnMissing );
+	function cleanDirectory( required directory, boolean throwOnMissing );
+	array function contents( required directory, any filter, sort, boolean recurse = false, type = "all" );
+	array function allContents( required directory, any filter, sort, type = "all" );
+	array function files( required directory, any filter, sort, boolean recurse = false );
+	array function directories( required directory, any filter, sort, boolean recurse = false );
+	array function allFiles( required directory, any filter, sort );
+	array function allDirectories( required directory, any filter, sort );
+	array function filesMap( required directory, any filter, sort, boolean recurse = false );
+	array function allFilesMap( required directory, any filter, sort );
+	array function contentsMap( required directory, any filter, sort, boolean recurse = false );
+	array function allContentsMap( required directory, any filter, sort );
+	array function glob( required pattern );
+}
+
+```
+{% endtab %}
+{% tab title="CFML" %}
+```cfml
 component extends="cbfs.models.AbstractDiskProvider"{
 
 	/**
@@ -702,17 +767,53 @@ component extends="cbfs.models.AbstractDiskProvider"{
 }
 
 ```
+{% endtab %}
+{% endtabs %}
 
 ### Testing
 
-To create your own provider tests, create a new Spec which extends `cbfs.models.testing.AbstractDiskSpec`
+To create your own provider tests, create a new class that extends `cbfs.models.testing.AbstractDiskSpec`.
 
 Within your `tests` directory you will need to add a file at `tests/resources/assets/binary_file.png` which will be used to test binary uploads for the provider you create.\
 \
 Example:
 
-```javascript
-omponent extends="cbfs.models.testing.AbstractDiskSpec" {
+{% tabs %}
+{% tab title="BoxLang" %}
+```boxlang
+class extends="cbfs.models.testing.AbstractDiskSpec" {
+	variables.providerName = "MyCustom";
+	variables.TEST_PATH = expandPath( "/tests/storage" );
+	variables.testFeatures = { symbolicLink : true };
+
+	function beforeAll() {
+		if ( directoryExists( variables.TEST_PATH ) ) {
+			directoryDelete( variables.TEST_PATH, true );
+		}
+		super.beforeAll();
+	}
+
+	function run() {
+		super.run();
+		describe( "MyCustom Provider Extended Specs", function() {
+			beforeEach( function( currentSpec ) {
+				disk = getDisk();
+			} );
+			story( "I want to test some custom function in my provider", function() {
+				// Add provider-specific expectations here.
+			} );
+		} );
+	}
+
+	function validateInfoStruct( required info, required disk ) {
+		expect( info ).toHaveKey( "path,size,name,type,canWrite,canRead,isHidden" );
+	}
+}
+```
+{% endtab %}
+{% tab title="CFML" %}
+```cfml
+component extends="cbfs.models.testing.AbstractDiskSpec" {
 
 	// The name of the provider in the test-harness we want to test
 	variables.providerName = "MyCustom";
@@ -756,3 +857,5 @@ omponent extends="cbfs.models.testing.AbstractDiskSpec" {
 }
 
 ```
+{% endtab %}
+{% endtabs %}

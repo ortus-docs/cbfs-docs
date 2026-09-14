@@ -1,154 +1,111 @@
 # Interception Points
 
-There are [ColdBox interception points](https://coldbox.ortusbooks.com/the-basics/interceptors) that are announced when working with CBFS disks, directories, and files that you can use. These can be used to provide additional functionality in your applications such as logging file access, securing folders, and more.
+There are [ColdBox interception points](https://coldbox.ortusbooks.com/the-basics/interceptors) announced when working with CBFS disks, directories, and files. You can use them to log file access, secure folders, and add application behavior.
+
+Each example shows the BoxLang class first and the equivalent CFML class second.
 
 ## cbfsOnDiskStart
 
-Invoked after a disk has been started.
+Invoked after a disk has been started. CBFS manages disk startup automatically.
 
-{% hint style="info" %}
-CBFS automatically manages the starting of disks.
-{% endhint %}
-
-```javascript
-component {
-      function cbfsOnDiskStart( disk ) {
-            //java...
-      }
+{% tabs %}
+{% tab title="BoxLang" %}
+```boxlang
+class {
+    function cbfsOnDiskStart( disk ) {
+        // Handle the event.
+    }
 }
 ```
+{% endtab %}
+{% tab title="CFML" %}
+```cfml
+component {
+    function cbfsOnDiskStart( disk ) {
+        // Handle the event.
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ## cbfsOnDiskShutdown
 
-{% hint style="info" %}
-CBFS automatically manages the shutdown of disks.
-{% endhint %}
+Invoked after a disk has been shut down. CBFS manages disk shutdown automatically.
 
-Invoked after a disk has been shutdown.
-
-```javascript
-component {
-      function cbfsOnDiskShutdown( disk ) {
-            //java...
-      }
-}
-```
-
-## cbfsOnFileCreate
-
-Invoked when a file is created.
-
-```javascript
-component {
-    function cbfsOnFileCreate( file ) {
- 
+{% tabs %}
+{% tab title="BoxLang" %}
+```boxlang
+class {
+    function cbfsOnDiskShutdown( disk ) {
+        // Handle the event.
     }
 }
 ```
-
-## cbfsOnFileMove
-
-Invoked when a file is moved.
-
-```javascript
+{% endtab %}
+{% tab title="CFML" %}
+```cfml
 component {
-    function cbfsOnFileMove( file ) {
- 
+    function cbfsOnDiskShutdown( disk ) {
+        // Handle the event.
     }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
-## cbfsOnFileCopy
+## File events
 
-Invoked when a file is copied.
+The file events are `cbfsOnFileCreate`, `cbfsOnFileMove`, `cbfsOnFileCopy`, `cbfsOnFileDelete`, and `cbfsOnFileInfoRequest`. Each receives the affected `file`.
 
-```javascript
-component {
-    function cbfsOnFileCopy( file ) {
- 
-    }
+{% tabs %}
+{% tab title="BoxLang" %}
+```boxlang
+class {
+    function cbfsOnFileCreate( file ) {}
+    function cbfsOnFileMove( file ) {}
+    function cbfsOnFileCopy( file ) {}
+    function cbfsOnFileDelete( file ) {}
+    function cbfsOnFileInfoRequest( file ) {}
 }
 ```
-
-## cbfsOnFileDelete
-
-Invoked when a file is deleted.
-
-```javascript
+{% endtab %}
+{% tab title="CFML" %}
+```cfml
 component {
-    function cbfsOnFileDelete( file ) {
-        
-    }
+    function cbfsOnFileCreate( file ) {}
+    function cbfsOnFileMove( file ) {}
+    function cbfsOnFileCopy( file ) {}
+    function cbfsOnFileDelete( file ) {}
+    function cbfsOnFileInfoRequest( file ) {}
 }
 ```
+{% endtab %}
+{% endtabs %}
 
-## cbfsOnFileInfoRequest
+## Directory events
 
-Invoked when info or extended info is requested on a file.
+The directory events are `cbfsOnDirectoryMove`, `cbfsOnDirectoryCreate`, `cbfsOnDirectoryCopy`, and `cbfsOnDirectoryDelete`.
 
-```javascript
-component {
-    function cbfsOnFileInfoRequest( file ) {
-    
-    }
+{% tabs %}
+{% tab title="BoxLang" %}
+```boxlang
+class {
+    function cbfsOnDirectoryMove( source, destination, disk ) {}
+    function cbfsOnDirectoryCreate( directory, disk ) {}
+    function cbfsOnDirectoryCopy( source, destination, disk ) {}
+    function cbfsOnDirectoryDelete( directory, disk ) {}
 }
 ```
-
-## cbfsOnFileMove
-
-Invoked when a file is moved.
-
-```javascript
+{% endtab %}
+{% tab title="CFML" %}
+```cfml
 component {
-    function cbfsOnFileMove( file ) {
-        
-    }
+    function cbfsOnDirectoryMove( source, destination, disk ) {}
+    function cbfsOnDirectoryCreate( directory, disk ) {}
+    function cbfsOnDirectoryCopy( source, destination, disk ) {}
+    function cbfsOnDirectoryDelete( directory, disk ) {}
 }
 ```
-
-## cbfsOnDirectoryMove
-
-Invoked when a directory is moved.
-
-<pre class="language-javascript"><code class="lang-javascript"><strong>component {
-</strong>    function cbfsOnDirectoryMove( source, destination, disk ) {
-    
-    }
-}
-</code></pre>
-
-## cbfsOnDirectoryCreate
-
-Invoked when a directory is created.
-
-```javascript
-component {
-    function cbfsOnDirectoryCreate( directory, disk ) {
-    
-    }
-}
-```
-
-## cbfsOnDirectoryCopy
-
-Invoked when a directory is copied.
-
-```javascript
-component {
-    function cbfsOnDirectoryCopy( source, destination, disk ) {
-    
-    }
-}
-```
-
-## cbfsOnDirectoryDelete
-
-Invoked when a directory is deleted.
-
-```javascript
-component {
-    function cbfsOnDirectoryDelete( directory, disk ) {
-    
-    }
-}
-```
+{% endtab %}
+{% endtabs %}

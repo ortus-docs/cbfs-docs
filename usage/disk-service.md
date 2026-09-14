@@ -40,15 +40,28 @@ property name="tempDisk" inject="cbfs:disks:temp";
 
 The cbfs module registers a helper method called `cbfs( diskName )` that you can use in your handlers, layouts, and views to get an instance of a specific disk:
 
-```javascript
-// SomeHandler.cfc
-component {
-    function index( event, rc, prc ) {
-        var storage = cbfs( "RamDisk" );
-        var files = storage.allFiles();
-    }
+{% tabs %}
+{% tab title="BoxLang" %}
+```boxlang
+class SomeHandler {
+  function index( event, rc, prc ) {
+    var storage = cbfs( "RamDisk" );
+    var files = storage.allFiles();
+  }
 }
 ```
+{% endtab %}
+{% tab title="CFML" %}
+```cfml
+component {
+  function index( event, rc, prc ) {
+    var storage = cbfs( "RamDisk" );
+    var files = storage.allFiles();
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ## Core Methods
 
