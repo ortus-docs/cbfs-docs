@@ -5,6 +5,16 @@
 ## Intro
 
 * [Releases](intro/releases.md)
+  * [1.2 - Unreleased](intro/releases/1.2.md)
+  * [1.1.4](intro/releases/1.1.4.md)
+  * [1.1.2](intro/releases/1.1.2.md)
+  * [1.1.1](intro/releases/1.1.1.md)
+  * [1.1.0](intro/releases/1.1.0.md)
+  * [1.0.4](intro/releases/1.0.4.md)
+  * [1.0.3](intro/releases/1.0.3.md)
+  * [1.0.2](intro/releases/1.0.2.md)
+  * [1.0.1](intro/releases/1.0.1.md)
+  * [1.0.0](intro/releases/1.0.0.md)
 * [Release History](intro/release-history.md)
 * [About This Book](intro/about-this-book.md)
 
