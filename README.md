@@ -18,6 +18,13 @@ The available storage providers are
 * **Ram** - An in-memory file storage provider.
 * **S3** - An Amazon S3, Rackspace, Digital Ocean, or Google Cloud Storage provider.
 
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody>
+<tr><td><strong>Get started</strong></td><td>Install CBFS and configure your first disk.</td><td><a href="getting-started/installation.md">getting-started/installation.md</a></td></tr>
+<tr><td><strong>Choose a provider</strong></td><td>Compare Local, RAM, and S3 storage backends.</td><td><a href="getting-started/providers/README.md">getting-started/providers/README.md</a></td></tr>
+<tr><td><strong>Use the Disk API</strong></td><td>Work with files and directories through one consistent API.</td><td><a href="usage/disk-usage/README.md">usage/disk-usage/README.md</a></td></tr>
+<tr><td><strong>Browse the reference</strong></td><td>Look up services, providers, configuration, lifecycle hooks, and errors.</td><td><a href="reference/README.md">reference/README.md</a></td></tr>
+</tbody></table>
+
 ## System Requirements
 
 * Lucee 5+
