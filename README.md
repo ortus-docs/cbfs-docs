@@ -27,9 +27,10 @@ The available storage providers are
 
 ## System Requirements
 
-* Lucee 5+
-* Adobe ColdFusion 2018+
-* Java 11+
+* BoxLang 1+ (Preferred)
+* Lucee 6+
+* Adobe ColdFusion 2023+
+* Java 21+
 
 ## Versioning
 
