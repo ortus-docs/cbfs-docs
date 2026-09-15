@@ -5,7 +5,7 @@
 ## Intro
 
 * [Releases](intro/releases.md)
-  * [1.2 - Unreleased](intro/releases/1.2.md)
+  * [1.2.0](intro/releases/1.2.md)
   * [1.1.4](intro/releases/1.1.4.md)
   * [1.1.2](intro/releases/1.1.2.md)
   * [1.1.1](intro/releases/1.1.1.md)
